@@ -1,4 +1,0 @@
-flask
-pandas
-psycopg2
-flask_socketio
