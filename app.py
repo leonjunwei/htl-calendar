@@ -1,13 +1,13 @@
 #!/usr/bin/env python
 
 import pickle
-# import mysql.connector
+import mysql.connector
 import time
 from threading import Thread
 from flask import Flask, render_template, session, request
 from flask_socketio import SocketIO, emit, join_room, leave_room, \
     close_room, rooms, disconnect
-# import flask_login
+import flask_login
 
 
 #Leon Lam, 11 Jul 2016
