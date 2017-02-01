@@ -19,10 +19,10 @@ display_year = current_time.year
 #     pickle.dump({},file)
 
 
-with open('calendar','rb') as file:
-    store = pickle.load(file)
+# with open('calendar','rb') as file:
+#     store = pickle.load(file)
 
-print(store)
+# print(store)
 
 
 @app.route('/health')
@@ -55,37 +55,55 @@ def add_to_dictionary(form):
     import random
     with open('calendar','rb') as file:
         store = pickle.load(file)
-        for key in form:
-            uniqueID = random.random() #between 0 and 1
-            store[uniqueID] = form[key]
+        uniqueID = random.random() #between 0 and 1
+        while uniqueID in store:
+            uniqueID = random.random()
+        store[uniqueID] = form #store contains randomKey:eventDictionary pairs, eventDictionary is another dictionary with event details
     with open('calendar','wb') as file1:
         pickle.dump(store,file1)
     return uniqueID
 
+def read_from_dictionary():
+    with open('calendar','rb') as file:
+        store = pickle.load(file)
+    return str(store)
 
-@app.route('/event_page.html',methods = ["GET","POST"])
-def event_page():
+
+# @app.route('/event_page.html', methods = ["GET","POST"])
+# def event_page():
+#     if request.method == "GET":
+#         print("poo")
+#         return render_template('event_page.html')
+#     if request.method == "POST":
+#         print("event submitted")
+#         print("Your unique ID for this event is: " + str(add_to_dictionary(request.form)))
+#         return render_template('event_page.html')
+
+
+@app.route('/event_submission.html',methods = ["GET","POST"]) #page where users can submit events
+def event_submission():
     if request.method == "GET":
-        print("poo")
-        return render_template('event_page.html')
+        return render_template('event_submission.html')
+    else:
+        return render_template('event_submitted.html', data = read_from_dictionary())
+
+
+@app.route('/event_submitted.html',methods = ["GET","POST"]) #page afterward that shows submission status
+def event_submitted():
     if request.method == "POST":
-        print("event submitted")
-        print("Your unique ID for this event is: " + str(add_to_dictionary(request.form)))
-        return render_template('event_page.html')
->>>>>>> 64d7a4f6ce8679fccd941c0cdb7082367533aece
+        try:
+            message = "Event successfully submitted! Your unique ID for this event is: " + str(add_to_dictionary(request.form))        
+        except:
+            message = "Something went wrong - sorry!"
+        return render_template('event_submitted.html', data = message)
+    if request.method == "GET":
+        message = "You really shouldn't have gotten here this way."
+        return render_template('event_submitted.html', data = message)
 
 
 
 if __name__ == '__main__':
-<<<<<<< HEAD
-    socketio.run(app, debug=True)
-
-"""
-Switch debug to False before actual implementation!
-"""
-=======
     port = int(os.environ.get('PORT', 5000))
-    app.run(host='0.0.0.0', debug=True, port=port)
+    # app.run(host='0.0.0.0', debug=True, port=port)
+    app.run(host='127.0.0.1', debug=True, port=port)
 
-# print current_time.year
->>>>>>> 64d7a4f6ce8679fccd941c0cdb7082367533aece

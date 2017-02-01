@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+        <title>Event submission</title>
+
+
+        <!-- Bootstrap -->
+    <link rel=stylesheet type=text/css href="static/stylesheet.css">
+    <link href="https://fonts.googleapis.com/css?family=Bree+Serif|Karla|Lobster|Pacifico|Open+Sans+Condensed:300" rel="stylesheet">
+
+
+
+        <!--Viewport Meta Tag for mobile-friendliness-->
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no"><!--Disables Zoom on index-->
+
+        <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+        <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+        <!--[if lt IE 9]>
+          <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+          <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+        <![endif]-->
+
+    </head>
+    <body>
+    <br></br>
+    <div class = "container">
+        <br></br>
+        <h2><b>Submit Event Here!</b></h2>
+        <br></br>
+        <div class = "form_main">
+            <form id="experiment_search" method="POST" action='/event_submitted.html'>
+                    <div class = "row">
+
+                        <div class = "col-xs-1 col-sm-1 col-md-1 col-lg-1">
+                            <p>Event Name:</p>
+                        </div>
+                        <div class = "col-xs-2 col-sm-2 col-md-2 col-lg-2">
+                            <input type = "text"  class = "formData" name = "eventName" value="Event name">
+                        </div>
+
+
+                        <div class = "col-xs-1 col-sm-1 col-md-1 col-lg-1">
+                            <p>Time Start:</p>
+                        </div>
+                          <div class = "col-xs-2 col-sm-2 col-md-2 col-lg-2">
+                            <input type = "text"  class = "formData" name = "timeStart" value="Time Start">
+                        </div>
+
+                        <div class = "col-xs-1 col-sm-1 col-md-1 col-lg-1">
+                            <p>Time End:</p>
+                        </div>
+                          <div class = "col-xs-2 col-sm-2 col-md-2 col-lg-2">
+                            <input type = "text"  class = "formData" name = "timeEnd" value="Time End">
+                        </div>
+
+
+                        <div class = "col-xs-1 col-sm-1 col-md-1 col-lg-1">
+                            <p>Location:</p>
+                        </div>
+                          <div class = "col-xs-2 col-sm-2 col-md-2 col-lg-2">
+                            <input type = "text"  class = "formData" name = "location" value="Location">
+                        </div>
+
+
+                        <div class = "col-xs-1 col-sm-1 col-md-1 col-lg-1">
+                            <p>Description:</p>
+                        </div>
+                          <div class = "col-xs-2 col-sm-2 col-md-2 col-lg-2">
+                            <input type = "text"  class = "formData" name = "description" value="Description">
+                        </div>
+
+                        <div class = "col-xs-1 col-sm-1 col-md-1 col-lg-1">
+                            <p>Link:</p>
+                        </div>
+                          <div class = "col-xs-2 col-sm-2 col-md-2 col-lg-2">
+                            <input type = "text"  class = "formData" name = "link" value="Link">
+                        </div>
+
+                    </div> <!-- end row -->
+                </div>
+                <br>
+                <div class = "row">
+                    <div class = "col-xs-1 col-sm-1 col-md-1 col-lg-1">
+                        
+                    </div>
+                    <input class = "pull-right" type="submit" value="Submit Event">
+                </div>
+            </form>
+            <form action = "#" method = "POST">
+                <input type = "submit" value = "DEBUG - READ CALENDAR">
+            </form>
+            
+        </div> <!-- end form_main -->
+        <a href = "/">Return to Index</a>
+    </div> <!-- end container -->
+    
+<!--             
+        Use something like:
+
+            socket.on('my response', function(msg) {
+                $('#log').append('<br>' + $('<div/>').text('Received #' + msg.count + ': ' + msg.data).html());
+            }); 
+
+            To add a new row? Or we can just google it, really.
+
+            Then we have to lump all the row inputs into a SQL query and pull data from our database.
+
+            -->
+
+
+      <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src="../static/js/bootstrap.min.js"></script>
+    <!-- <script src="js/jquery.dlmenu.js"></script>
+    <script src="js/modernizr.custom.js"></script>
+    <script src="js/pagetransitions.js"></script> -->
+
+  </body>
+</html>
