@@ -1,5 +1,5 @@
 html {
-  background: url("background_final.png") center center fixed;
+  background: url("background_final2.png") center center fixed;
   -webkit-background-size: cover;
     -moz-background-size: cover;
     -o-background-size: cover;
@@ -31,6 +31,14 @@ header {
 }
 
 h2 {
+  font-family: 'Lobster', sans-serif;
+  font-size: 70px;
+  color: black;
+  margin: 0 0 10px;
+  text-align: center;
+}
+
+h3 {
   font-family: 'Lobster', sans-serif;
   font-size: 70px;
   color: black;
@@ -164,6 +172,12 @@ input[type=date]:hover {
 input[type=date]:active {
   background: rgba(255, 255, 255, .3);
   color: black;
+}
+
+input.navigation {
+  display: none;
+  border: none;
+  background: none;
 }
 
 p {

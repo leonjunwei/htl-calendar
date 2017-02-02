@@ -92,7 +92,7 @@ def event_submission():
 def event_submitted():
     if request.method == "POST":
         try:
-            message = "Event successfully submitted! Your unique ID for this event is: " + str(add_to_dictionary(request.form))        
+            message = "Your event has been successfully submitted! Your unique ID for this event is: " + str(add_to_dictionary(request.form))        
         except:
             message = "Something went wrong - sorry!"
         return render_template('event_submitted.html', data = message)

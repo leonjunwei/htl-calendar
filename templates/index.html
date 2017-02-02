@@ -4,7 +4,7 @@
 <html>
 
   <head>
-    <link rel=stylesheet type=text/css href="static/stylesheet.css?version=18">
+    <link rel=stylesheet type=text/css href="static/stylesheet.css?version=24">
     <link href="https://fonts.googleapis.com/css?family=Bree+Serif|Karla|Lobster|Pacifico|Open+Sans+Condensed:300" rel="stylesheet"> <!-- add Google fonts -->
     <title>Clndr</title>
 
@@ -59,7 +59,7 @@
     cal = '<table cellpadding=15>' + TR_start;
     cal += '<td colspan="' + DAYS_OF_WEEK + '"><center><b><div class="tableheader">';
 
-    cal += "<form method = 'POST' action = '/'><input hidden type='text' name='direction' value='backward'><button class='submit' type='submit' value='submit'>&laquo;</button></form>&emsp;&emsp;" + month_of_year[month] + '   ' + year + "&emsp;&emsp;<form method = 'POST' action = '/'><input hidden type='text' name='direction' value='forward'><button class='submit' type='submit' value='submit'>&raquo;</button></form>" + '</div></b>' + TD_end + TR_end;
+    cal += "<form method = 'POST' action = '/'><input hidden class='navigation' type='text' name='direction' value='backward'><button class='submit' type='submit' value='submit'>&laquo;</button></form>&emsp;&emsp;" + month_of_year[month] + '   ' + year + "&emsp;&emsp;<form method = 'POST' action = '/'><input hidden class='navigation' type='text' name='direction' value='forward'><button class='submit' type='submit' value='submit'>&raquo;</button></form>" + '</div></b>' + TD_end + TR_end;
     cal += TR_start
 
 
