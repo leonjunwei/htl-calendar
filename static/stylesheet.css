@@ -87,6 +87,7 @@ table {
   font-family: 'Open Sans Condensed', sans-serif;
   font-size: 40px;
   width: 100%;
+
 }
 
 td {
@@ -117,4 +118,55 @@ a:hover {
 
 form {
   display: inline;
+}
+
+input {
+  float:center;
+  width:90%;
+  vertical-align: middle;
+}
+
+input[type=text] {
+  font-family: 'Open Sans Condensed', sans-serif;
+  font-size: 20px;
+  padding: 2%;
+  display: inline-block;
+  border: 2px solid black;
+  border-radius: 5px;
+  background: none;
+}
+
+input[type=text]:hover {
+  background: rgba(255, 255, 255, .3);
+  color: black;
+}
+
+input[type=text]:active {
+  background: rgba(255, 255, 255, .3);
+  color: black;
+}
+
+input[type=date] {
+  font-family: 'Open Sans Condensed', sans-serif;
+  font-size: 20px;
+  padding: 2%;
+  display: inline-block;
+  border: 2px solid black;
+  border-radius: 5px;
+  background: none;
+}
+
+input[type=date]:hover {
+  background: rgba(255, 255, 255, .3);
+  color: black;
+}
+
+input[type=date]:active {
+  background: rgba(255, 255, 255, .3);
+  color: black;
+}
+
+p {
+  font-family: 'Bree Serif', serif;
+  font-size: 24px;
 }
