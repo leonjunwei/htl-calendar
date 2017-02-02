@@ -28,6 +28,7 @@ display_year = current_time.year
 def health():
     return 'ok'
 
+
 @app.route('/',methods = ["GET","POST"])
 @app.route('/index.html',methods = ["GET","POST"])
 def home_page():
@@ -71,6 +72,8 @@ def read_from_dictionary():
 def wipe_everything():
     with open('calendar','wb') as file:
         pickle.dump({},file)
+
+
 
 # @app.route('/event_page.html', methods = ["GET","POST"])
 # def event_page():
