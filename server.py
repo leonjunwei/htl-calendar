@@ -68,6 +68,9 @@ def read_from_dictionary():
         store = pickle.load(file)
     return str(store)
 
+def wipe_everything():
+    with open('calendar','wb') as file:
+        pickle.dump({},file)
 
 # @app.route('/event_page.html', methods = ["GET","POST"])
 # def event_page():
@@ -96,11 +99,19 @@ def event_submitted():
         except:
             message = "Something went wrong - sorry!"
         return render_template('event_submitted.html', data = message)
-    if request.method == "GET":
+    elif request.method == "GET":
         message = "You really shouldn't have gotten here this way."
         return render_template('event_submitted.html', data = message)
 
-
+@app.route('/wipe_everything.html',methods = ["GET","POST"])
+def wipeEverything():
+    if request.method == "POST":
+        wipe_everything()
+        message = "Wiped everything!"
+        return render_template('event_submitted', data = message)
+    elif request.method == "GET":
+        message = "You really shouldn't have gotten here this way."
+        return render_template('event_submitted.html', data = message)
 
 if __name__ == '__main__':
     port = int(os.environ.get('PORT', 5000)) #not sure this will work
