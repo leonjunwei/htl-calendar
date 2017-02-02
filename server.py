@@ -32,13 +32,19 @@ def make_conn():
     return conn
 
 def interact_with_database(instruction): #this is A VERY BAD IDEA if you don't want SQL injections
-    store = []
+    store = None
     conn = make_conn()
     with conn.cursor() as cur:
         cur.execute(instruction)
-        store = [row for row in cur]
+        try:
+            store = [row for row in cur]
+        except:
+            pass
     conn.close()
-    return "Your instruction was " + str(instruction) + " . Cursor output (if any) is: " + str(store)
+    if store:
+        return "Your instruction was " + str(instruction) + " . Cursor output (if any) is: " + str(store)
+    else:
+        return "Your instruction was " + str(instruction)
 
 @app.route('/',methods = ["GET","POST"])
 @app.route('/index.html',methods = ["GET","POST"])
