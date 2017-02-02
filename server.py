@@ -1,7 +1,8 @@
 import os
 import datetime
 import pickle
-
+import psycopg2
+import urllib.parse
 
 # import pandas as pd
 from flask import Flask, redirect, render_template, request, url_for
@@ -12,6 +13,28 @@ app = Flask(__name__)
 current_time = datetime.datetime.now()
 display_month = current_time.month-1
 display_year = current_time.year
+
+
+
+urllibparse.uses_netloc.append("postgres")
+url = urllib.parse.urlparse(os.environ["DATABASE_URL"])
+
+
+def make_conn():
+    conn = psycopg2.connect(
+    database=url.path[1:],
+    user=url.username,
+    password=url.password,
+    host=url.hostname,
+    port=url.port)
+    return conn
+
+def interact_with_database(message): #this is A VERY BAD IDEA if you don't want SQL injections
+    conn = make_conn()
+    with conn.cursor() as cur:
+        cur.execute(message)
+    conn.close()
+
 
 
 # with open('calendar','wb') as file:
