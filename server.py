@@ -17,7 +17,7 @@ display_year = current_time.year
 
 ##Database version##
 import psycopg2
-urllibparse.uses_netloc.append("postgres")
+urllib.parse.uses_netloc.append("postgres")
 url = urllib.parse.urlparse(os.environ["DATABASE_URL"])
 
 
