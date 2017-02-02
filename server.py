@@ -108,7 +108,7 @@ def wipeEverything():
     if request.method == "POST":
         wipe_everything()
         message = "Wiped everything!"
-        return render_template('event_submitted', data = message)
+        return render_template('event_submitted.html', data = message)
     elif request.method == "GET":
         message = "You really shouldn't have gotten here this way."
         return render_template('event_submitted.html', data = message)
