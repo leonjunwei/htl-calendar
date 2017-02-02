@@ -40,6 +40,7 @@ def interact_with_database(instruction): #this is A VERY BAD IDEA if you don't w
             store = [row for row in cur]
         except:
             pass
+    conn.commit()
     conn.close()
     if store:
         return "Your instruction was " + str(instruction) + " . Cursor output (if any) is: " + str(store)
