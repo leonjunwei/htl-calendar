@@ -1,9 +1,9 @@
 html {
   background: url("background_final2.png") center center fixed;
   -webkit-background-size: cover;
-    -moz-background-size: cover;
-    -o-background-size: cover;
-    background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
 }
 
 body {
@@ -15,10 +15,6 @@ div {
   border-radius: 5px;
   box-sizing: border-box;
   padding: 15px;
-}
-
-.highlight {
-  background: rgba(255, 255, 255, .3);
 }
 
 div.tableheader {
@@ -38,20 +34,11 @@ h2 {
   text-align: center;
 }
 
-h3 {
-  font-family: 'Lobster', sans-serif;
-  font-size: 70px;
-  color: black;
-  margin: 0 0 10px;
-  text-align: center;
-}
-
 button {
   -webkit-transition-duration: 0.4s; /*For Safari users*/
   font-family: 'Bree Serif', serif;
   background: none;
   border: 2px black solid;
-  font-size: 20px;
   transition-duration: 0.4s;
   padding: 15px;
   text-align: center;
@@ -62,6 +49,20 @@ button {
 button:hover {
   cursor: pointer;
   background-color: black;
+  color: white;
+}
+
+button.menu {
+  font-size: 24px;
+}
+
+button.navigation {
+  font-size: 40px;
+  border: none;
+}
+
+button.navigation:hover {
+  background: none;
   color: white;
 }
 
@@ -76,51 +77,6 @@ button.submit:hover {
   cursor: pointer;
   background: none;
   color: white;
-}
-
-/*button:first-child {
-  left: 0;
-}
-
-button:last-child {
-  right: 0;
-}*/
-
-table {
-  background: rgba(255, 255, 255, .3);
-  border-collapse: collapse;
-  border-radius: 5px;
-  color: #222;
-  font-family: 'Open Sans Condensed', sans-serif;
-  font-size: 40px;
-  width: 100%;
-
-}
-
-td {
-  text-align: center;
-  white-space: nowrap;
-}
-
-a {
-  -webkit-transition-duration: 0.4s;
-  text-decoration: none;
-  color: black;
-  font-family: 'Bree Serif', serif;
-  background: none;
-  border: none;
-  font-size: 20px;
-  text-align: center;
-}
-
-a:visited {
-  text-decoration: none;
-  color: black;
-}
-
-a:hover {
-  color: white;
-  text-decoration: none;
 }
 
 form {
@@ -163,7 +119,7 @@ input[type=date] {
   padding: 1%;
   display: inline-block;
   border: 2px solid black;
-  border-radius: 5px;
+  border-radius: 3px;
   background: none;
 }
 
@@ -178,14 +134,61 @@ input[type=date]:active {
 }
 
 input.navigation {
+  font-size: 40px;
   display: none;
   border: none;
   background: none;
 }
 
+table {
+  background: rgba(255, 255, 255, .3);
+  border-collapse: collapse;
+  border-radius: 5px;
+  color: #222;
+  font-family: 'Open Sans Condensed', sans-serif;
+  font-size: 40px;
+  width: 100%;
+
+}
+
+td {
+  text-align: center;
+  white-space: nowrap;
+}
+
+a {
+  -webkit-transition-duration: 0.4s;
+  text-decoration: none;
+  color: black;
+  font-family: 'Bree Serif', serif;
+  background: none;
+  border: none;
+  font-size: 20px;
+  text-align: center;
+}
+
+a:visited {
+  text-decoration: none;
+  color: black;
+}
+
+a:hover {
+  color: white;
+  text-decoration: none;
+}
+
 p {
   font-family: 'Bree Serif', serif;
   font-size: 24px;
+}
+
+
+
+
+
+
+.highlight {
+  background: rgba(255, 255, 255, .3);
 }
 
 ::-webkit-input-placeholder {
