@@ -1,16 +1,15 @@
 <!DOCTYPE html>
     <head>
         <title>Event submission</title>
-        <link rel=stylesheet type=text/css href="static/stylesheet.css?version=24">
+        <link rel=stylesheet type=text/css href="static/stylesheet.css?version=61">
         <link href="https://fonts.googleapis.com/css?family=Bree+Serif|Karla|Lobster|Pacifico|Open+Sans+Condensed:300" rel="stylesheet">
     </head>
 
     <body>
         <center>
         <div class="highlight"><div class="highlight">
-            <h2><b>Submit Events Here!</b></h2></div>
+            <h2><b>Submit Events Here!</b></h2></div><div></div>
 
-            <div>
                 <form method="POST" action='/event_submitted.html'>
 
                     <table cellpadding="15%">
@@ -20,9 +19,9 @@
                             <td><div class="tableheader">Start Time</div></td>
                         </tr>
                         <tr>
-                            <td><input type = "text" class = "formData" name = "eventName" value="Enter name here"></td>
-                            <td><input type = "date"  class = "formData" name = "date" value="Location"></td>
-                            <td><input type = "text"  class = "formData" name = "timeStart" value="00:00"></td>
+                            <td><input type = "text" class = "wider" name = "eventName" placeholder="Enter name here..."></td>
+                            <td><input type = "date"  class = "wider" name = "date" value="Location"></td>
+                            <td><input type = "text"  class = "wider" name = "timeStart" value="00:00"></td>
                         </tr>
                         <tr><td>&emsp;</td></tr>
                         <tr>
@@ -31,9 +30,9 @@
                             <td><div class="tableheader">Description</div></td>
                         </tr>
                         <tr>
-                            <td><input type = "text"  class = "formData" name = "timeEnd" value="23:50"></td>
-                            <td><input type = "text"  class = "formData" name = "location" value="Enter location here"></td>
-                            <td><input type = "text"  class = "formData" name = "description" value="Enter description here"></td>
+                            <td><input type = "text"  class = "wider" name = "timeEnd" value="23:50"></td>
+                            <td><input type = "text"  class = "wider" name = "location" placeholder="Enter location here..."></td>
+                            <td><input type = "text"  class = "wider" name = "description" placeholder="Enter description here..."></td>
                         </tr>
                     </table>
 
@@ -44,7 +43,7 @@
                 &emsp;
                 <form action = "/" method = "GET">
                     <input hidden type = "submit"><button>Return to Calendar</button></form>
-                </div></div></div>
+                </div></div>
 
                 <br/><br/><br/><form action = "#" method = "POST">
                     <input hidden type = "submit" value = "DEBUG - READ CALENDAR"><button>(Temp) Debug Button</button>

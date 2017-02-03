@@ -30,7 +30,7 @@ def health():
 
 
 @app.route('/',methods = ["GET","POST"])
-@app.route('/index.html',methods = ["GET","POST"])
+@app.route('/index',methods = ["GET","POST"])
 def home_page():
     global display_month
     global display_year
@@ -86,7 +86,7 @@ def wipe_everything():
 #         return render_template('event_page.html')
 
 
-@app.route('/event_submission.html',methods = ["GET","POST"]) #page where users can submit events
+@app.route('/event_submission',methods = ["GET","POST"]) #page where users can submit events
 def event_submission():
     if request.method == "GET":
         return render_template('event_submission.html')
@@ -115,6 +115,10 @@ def wipeEverything():
     elif request.method == "GET":
         message = "You really shouldn't have gotten here this way."
         return render_template('event_submitted.html', data = message)
+
+@app.route('/agenda_view')
+def agenda_view():
+    return render_template('agenda_view.html')
 
 if __name__ == '__main__':
     port = int(os.environ.get('PORT', 5000)) #not sure this will work

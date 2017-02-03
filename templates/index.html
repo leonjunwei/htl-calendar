@@ -16,10 +16,9 @@
     <div class="highlight">
     <h2>Olin Community Calendar</h2>
     <br/>
-    <a href="event_submission.html"><button>Submit Event</button></a>&emsp;
-    <a href="week_view.html"><button>View by Week</button></a>&emsp;
-    <a href=""><button>View by Month</button></a>&emsp;
-    <a href="agenda_view.html"><button>Agenda View</button></a>
+    <a href="event_submission"><button>Submit Event</button></a>&emsp;
+    <a href="week_view.html"><button>Week View</button></a>&emsp;
+    <a href="agenda_view"><button>Agenda View</button></a>
     </div>
 
     <div>
@@ -66,7 +65,7 @@
 
         // Code for formatting calendar
 
-        cal = '<table cellpadding=15>' + TR_start;
+        cal = '<table class="highlight" cellpadding=15>' + TR_start;
         cal += '<td colspan="' + DAYS_OF_WEEK + '"><center><b><div class="tableheader">';
 
         cal += "<form method = 'POST' action = '/'><input hidden class='navigation' type='text' name='direction' value='backward'><button class='submit' type='submit' value='submit'>&laquo;</button></form>&emsp;&emsp;" + month_of_year[month] + '   ' + year + "&emsp;&emsp;<form method = 'POST' action = '/'><input hidden class='navigation' type='text' name='direction' value='forward'><button class='submit' type='submit' value='submit'>&raquo;</button></form>" + '</div></b>' + TD_end + TR_end;
