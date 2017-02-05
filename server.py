@@ -154,7 +154,7 @@ def test():
 
 @app.route('/',methods = ["GET","POST"])
 @app.route('/index',methods = ["GET","POST"])
-def home_page():
+def index():
     global display_month
     global display_year
     if request.method == "GET":
