@@ -153,7 +153,7 @@ def test():
 
 
 @app.route('/',methods = ["GET","POST"])
-@app.route('/index.html',methods = ["GET","POST"])
+@app.route('/index',methods = ["GET","POST"])
 def home_page():
     global display_month
     global display_year
