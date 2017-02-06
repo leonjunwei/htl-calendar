@@ -112,11 +112,11 @@ def add_event_into_database(data):
     flag = None
     conn = make_conn()
     with conn.cursor() as cur:
-        try:
-            cur.execute("insert into events VALUES (%s)", data)
-            flag = 1
-        except:
-            pass
+        # try:
+        cur.execute("insert into events VALUES (%s)", data)
+        flag = 1
+        # except:
+            # pass
     conn.commit()
     conn.close()
     return flag #flag tells us if the query succeeded.
