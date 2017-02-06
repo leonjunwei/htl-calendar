@@ -104,7 +104,7 @@ def interact_with_database(instruction): #this is A VERY BAD IDEA if you don't w
     else:
         return "Your instruction was " + str(instruction)
 
-def add_event_into_database(data): 
+def add_event_into_database(data):
     """
     data must be a tuple, and its format must follow the table's format.
     data[0] should be the data that needs to be in the leftmost column of table, data[1] should be the next one and so on.
@@ -122,7 +122,20 @@ def add_event_into_database(data):
     return flag #flag tells us if the query succeeded.
 
 def add_form_to_database(form):
-    pass
+    """
+    Form is an ImmutableMultiDict with keys: 
+        event_name, event_taglist, startDate, startTime, endDate, endTime, event_location, event_summary and event_link
+    Our current table is set up such that the columns from left to right are as follows:
+        event_ID, event_name, event_taglist, event_start, event_end, event_location, event_summary, event_link
+    """
+    import random
+    event_ID = random.random()
+    data = (str(event_ID),form['event_name'],form['event_taglist'],form['startDate']+" "+form['startTime'],
+            form['endDate']+" "+form['endTime'],form['event_location'],form['event_summary'], form['event_link'])
+    if add_event_into_database(data):
+        return str(event_ID)
+    else:
+        return None
 
 ## Site Map ##
 
@@ -198,7 +211,7 @@ def event_submission():
 def event_submitted():
     if request.method == "POST":
         try:
-            message = "Your event has been successfully submitted! Request form = " + str(request.form)      
+            message = "Your event has been successfully submitted! Request form = " + str(request.form) + " and unique ID = " + add_form_to_database(request.form)  
         except:
             message = "Something went wrong - sorry!"
         return render_template('event_submitted.html', data = message)
