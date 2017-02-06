@@ -131,7 +131,7 @@ def add_form_to_database(form):
     import random
     event_ID = random.random()
     data = (str(event_ID),form['event_name'],form['event_taglist'],form['startDate']+" "+form['startTime'], form['endDate']+" "+form['endTime'],form['event_location'],form['event_summary'], form['event_link'])
-    if add_event_into_database(data):
+    if add_event_into_database(data) == 1:
         return str(event_ID)
     else:
         return str(data)
