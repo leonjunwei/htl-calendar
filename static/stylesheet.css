@@ -237,6 +237,10 @@ p {
   background: rgba(255, 255, 255, .3);
 }
 
+.halfhighlight {
+  background: rgba(255, 255, 255, .3);
+}
+
 ::-webkit-input-placeholder {
    color: black;
 }

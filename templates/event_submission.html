@@ -14,37 +14,44 @@
 
                 <form method="POST" action='/event_submitted.html'>
 
-                    <table cellpadding="15%">
+                    <table cellpadding="5%">
                         <tr>
                             <td><center><div class="tableheader">Event Name</div></center></td>
-                            <td><center><div class="tableheader">Start Date</div></center></td>
-                            <td><center><div class="tableheader">Start Time</div></center></td>
+                            <td><center><div class="tableheader">Description</div></center></td>
                         </tr>
                         <tr>
                             <td><input type = "text" class = "wider" name = "eventName" placeholder="Enter name here..."></td>
-                            <td><input type = "date"  class = "wider" name = "startdate" value="Start date"></td>
-                            <td><input type = "text"  class = "wider" name = "timeStart" value="00:00"></td>
-                        </tr>
-                        <tr><td>&emsp;</td></tr>
+                            <td><input type = "text"  class = "wider" name = "description" placeholder="Enter description here..."></td>
+                        </tr></table>
+                        
+                    <div><br/><br/><br/></div>
+
+                    <table cellpadding="5%">
                         <tr>
-                            <td><center><div class="tableheader">Location</div></center></td>
+                            <td><center><div class="tableheader">Start Date</div></center></td>
+                            <td><center><div class="tableheader">Start Time</div></center></td>
                             <td><center><div class="tableheader">End Date</div></center></td>
                             <td><center><div class="tableheader">End Time</div></center></td>
                         </tr>
                         <tr>
-                            <td><input type = "text"  class = "wider" name = "location" placeholder="Enter location here..."></td>
+                            <td><input type = "date"  class = "wider" name = "startdate" value="Start date"></td>
+                            <td><input type = "text"  class = "wider" name = "timeStart" value="00:00"></td>
                             <td><input type = "date"  class = "wider" name = "enddate" value="End date"></td>
                             <td><input type = "text"  class = "wider" name = "timeEnd" value="23:50"></td>
                         </tr>
-                        <tr><td>&emsp;</td></tr>
+                    </table>
+
+                    <div><br/><br/><br/></div>
+                        
+                    <table cellpadding="5%">
                         <tr>
+                            <td><center><div class="tableheader">Location</div></center></td>
                             <td><center><div class="tableheader">Tags</div></center></td>
-                            <td><center><div class="tableheader">Description</div></center></td>
                             <td><center><div class="tableheader">Link</div></center></td>
                         </tr>
                         <tr>
+                            <td><input type = "text"  class = "wider" name = "location" placeholder="Enter location here..."></td>
                             <td><input type = "text"  class = "wider" name = "tags" placeholder="Enter tags here..."></td>
-                            <td><input type = "text"  class = "wider" name = "description" placeholder="Enter description here..."></td>
                             <td><input type = "text"  class = "wider" name = "link" placeholder="Enter URL here..."></td>
                     </table>
 
