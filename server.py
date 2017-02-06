@@ -110,13 +110,16 @@ def add_event_into_database(data):
     data[0] should be the data that needs to be in the leftmost column of table, data[1] should be the next one and so on.
     """
     flag = None
+    instruction = "insert into events (event_ID, event_name, event_taglist, event_start, event_end, event_location, event_summary, event_link) VALUES (%s)"
+    values = data
+    assert isinstance(values, tuple)
     conn = make_conn()
     with conn.cursor() as cur:
-        # try:
-        cur.execute("insert into events (event_ID, event_name, event_taglist, event_start, event_end, event_location, event_summary, event_link) VALUES (%s)", data)
-        flag = 1
-        # except:
-            # pass
+        try:
+            cur.execute(instruction, values)
+            flag = 1
+        except:
+            flag = cur.mogrify(instruction, values)
     conn.commit()
     conn.close()
     return flag #flag tells us if the query succeeded.
@@ -131,10 +134,11 @@ def add_form_to_database(form):
     import random
     event_ID = random.random()
     data = (str(event_ID),form['event_name'],form['event_taglist'],str(form['startDate']+" "+form['startTime']), str(form['endDate']+" "+form['endTime']),form['event_location'],form['event_summary'], form['event_link'],)
-    if add_event_into_database(data) == 1:
+    flag = add_event_into_database(data)
+    if flag == 1:
         return str(event_ID)
     else:
-        return str(data)
+        return flag
 
 ## Site Map ##
 
