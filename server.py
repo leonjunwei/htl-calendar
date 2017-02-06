@@ -209,10 +209,12 @@ def event_submission():
 @app.route('/event_submitted.html',methods = ["GET","POST"]) #page afterward that shows submission status
 def event_submitted():
     if request.method == "POST":
-        try:
-            message = "Your event has been successfully submitted! Request form = " + str(request.form) + " and unique ID = " + add_form_to_database(request.form)  
-        except:
-            message = "Something went wrong - sorry!"
+        form = request.form
+        uID = add_form_to_database(form)
+        # try:
+        message = "Your event has been successfully submitted! Request form = " + str(request.form) + " and unique ID = " + add_form_to_database(request.form)  
+        # except:
+            # message = "Something went wrong - sorry!"
         return render_template('event_submitted.html', data = message)
     elif request.method == "GET":
         message = "You really shouldn't have gotten here this way."
