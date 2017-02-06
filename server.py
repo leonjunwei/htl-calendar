@@ -113,7 +113,7 @@ def add_event_into_database(data):
     conn = make_conn()
     with conn.cursor() as cur:
         try:
-            cur.execute("insert into events VALUES %s", data)
+            cur.execute("insert into events VALUES (%s)", data)
             flag = 1
         except:
             pass
@@ -209,10 +209,8 @@ def event_submission():
 @app.route('/event_submitted.html',methods = ["GET","POST"]) #page afterward that shows submission status
 def event_submitted():
     if request.method == "POST":
-        form = request.form
-        uID = add_form_to_database(form)
         # try:
-        message = "Your event has been successfully submitted! Request form = " + str(request.form) + " and unique ID = " + add_form_to_database(request.form)  
+        message = "Request form = " + str(request.form) + " and unique ID = " + add_form_to_database(request.form)  
         # except:
             # message = "Something went wrong - sorry!"
         return render_template('event_submitted.html', data = message)
