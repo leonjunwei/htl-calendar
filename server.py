@@ -113,7 +113,7 @@ def add_event_into_database(data):
     conn = make_conn()
     with conn.cursor() as cur:
         # try:
-        cur.execute("insert into events VALUES (%s)", data)
+        cur.execute("insert into events (event_ID, event_name, event_taglist, event_start, event_end, event_location, event_summary, event_link) VALUES (%s)", data)
         flag = 1
         # except:
             # pass
@@ -130,7 +130,7 @@ def add_form_to_database(form):
     """
     import random
     event_ID = random.random()
-    data = (str(event_ID),form['event_name'],form['event_taglist'],form['startDate']+" "+form['startTime'], form['endDate']+" "+form['endTime'],form['event_location'],form['event_summary'], form['event_link'])
+    data = (str(event_ID),form['event_name'],form['event_taglist'],str(form['startDate']+" "+form['startTime']), str(form['endDate']+" "+form['endTime']),form['event_location'],form['event_summary'], form['event_link'],)
     if add_event_into_database(data) == 1:
         return str(event_ID)
     else:
