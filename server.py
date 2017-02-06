@@ -110,7 +110,7 @@ def add_event_into_database(data):
     data[0] should be the data that needs to be in the leftmost column of table, data[1] should be the next one and so on.
     """
     flag = None
-    instruction = "insert into events (event_ID, event_name, event_taglist, event_start, event_end, event_location, event_summary, event_link) VALUES (%s)"
+    instruction = "insert into events values (%s, %s, %s, %s, %s, %s, %s, %s)"
     values = data
     assert isinstance(values, tuple)
     conn = make_conn()
