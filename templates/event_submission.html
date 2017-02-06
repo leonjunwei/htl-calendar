@@ -1,50 +1,59 @@
 <!DOCTYPE html>
     <head>
         <title>Event submission</title>
-        <link rel=stylesheet type=text/css href="static/stylesheet.css?version=24">
+        <link rel=stylesheet type=text/css href="static/stylesheet.css?version=77">
         <link href="https://fonts.googleapis.com/css?family=Bree+Serif|Karla|Lobster|Pacifico|Open+Sans+Condensed:300" rel="stylesheet">
     </head>
 
     <body>
         <center>
         <div class="highlight"><div class="highlight">
-            <h2><b>Submit Events Here!</b></h2></div>
+            <h2><b>Submit Events Here!</b></h2></div><div></div>
 
-            <div>
                 <form method="POST" action='/event_submitted.html'>
 
                     <table cellpadding="15%">
                         <tr>
                             <td><div class="tableheader">Event Name</div></td>
-                            <td><div class="tableheader">Date</div></td>
+                            <td><div class="tableheader">Start Date</div></td>
                             <td><div class="tableheader">Start Time</div></td>
                         </tr>
                         <tr>
-                            <td><input type = "text" class = "formData" name = "eventName" value="Enter name here"></td>
-                            <td><input type = "date"  class = "formData" name = "date" value="Date"></td>
-                            <td><input type = "text"  class = "formData" name = "timeStart" value="00:00"></td>
+                            <td><input type = "text" class = "wider" name = "eventName" placeholder="Enter name here..."></td>
+                            <td><input type = "date"  class = "wider" name = "startdate" value="Start date"></td>
+                            <td><input type = "text"  class = "wider" name = "timeStart" value="00:00"></td>
                         </tr>
                         <tr><td>&emsp;</td></tr>
                         <tr>
-                            <td><div class="tableheader">End Time</div></td>
                             <td><div class="tableheader">Location</div></td>
-                            <td><div class="tableheader">Description</div></td>
+                            <td><div class="tableheader">End Date</div></td>
+                            <td><div class="tableheader">End Time</div></td>
                         </tr>
                         <tr>
-                            <td><input type = "text"  class = "formData" name = "timeEnd" value="23:50"></td>
-                            <td><input type = "text"  class = "formData" name = "location" value="Enter location here"></td>
-                            <td><input type = "text"  class = "formData" name = "description" value="Enter description here"></td>
+                            <td><input type = "text"  class = "wider" name = "location" placeholder="Enter location here..."></td>
+                            <td><input type = "date"  class = "wider" name = "enddate" value="End date"></td>
+                            <td><input type = "text"  class = "wider" name = "timeEnd" value="23:50"></td>
                         </tr>
+                        <tr><td>&emsp;</td></tr>
+                        <tr>
+                            <td><div class="tableheader">Tags</div></td>
+                            <td><div class="tableheader">Description</div></td>
+                            <td><div class="tableheader">Link</div></td>
+                        </tr>
+                        <tr>
+                            <td><input type = "text"  class = "wider" name = "tags" placeholder="Enter tags here..."></td>
+                            <td><input type = "text"  class = "wider" name = "description" placeholder="Enter description here..."></td>
+                            <td><input type = "text"  class = "wider" name = "link" placeholder="Enter URL here..."></td>
                     </table>
 
                 </div>
                 <div class="highlight">
-                <input hidden type="submit" value="Submit Event"><button>Submit Event</button>
+                <input hidden type="submit" value="Submit Event"><button class="menu">Submit Event</button>
                 </form>
                 &emsp;
                 <form action = "/" method = "GET">
-                    <input hidden type = "submit"><button>Return to Calendar</button></form>
-                </div></div></div>
+                    <input hidden type = "submit"><button class="menu">Return to Calendar</button></form>
+                </div></div>
 
                 <br/><br/><br/><form action = "#" method = "POST">
                     <input hidden type = "submit" value = "DEBUG - READ CALENDAR"><button>(Temp) Debug Button</button>
@@ -54,17 +63,6 @@
     </form>
         </center>
     
-<!--             
-        Use something like:
 
-            socket.on('my response', function(msg) {
-                $('#log').append('<br>' + $('<div/>').text('Received #' + msg.count + ': ' + msg.data).html());
-            }); 
-
-            To add a new row? Or we can just google it, really.
-
-            Then we have to lump all the row inputs into a SQL query and pull data from our database.
-
-            -->
   </body>
 </html>

@@ -16,10 +16,16 @@ display_year = current_time.year
 
 ## To-Do ##
 
+# Get an agenda page running
+
+# Get each number on a calendar to go to an agenda page for that date
+"""
+Pull out the day/month/year and query the database for events on that day, then display an agenda page with that info?
+"""
 
 # Figure out how the columns of the database should be laid out
 """
-1) Unique Event ID (maybe allow users to override? What if there's an event by a different user with the same password they want?)
+1) Unique Event ID (string - maybe allow users to override? What if there's an event by a different user with the same password they want?)
 2) Event Name
 3) Event Taglist (string like "coding from_website limited_number"? A list of all tags ranked by frequency should be accessible somewhere.)
 4) Event start datetime (Allowing users to select date/time of start and date/time of end independently will be good)
@@ -28,6 +34,11 @@ display_year = current_time.year
 7) Event Summary
 8) Link/email to event (something people can click for even more details.)
 
+
+CREATE TABLE events (event_ID varchar(255), event_name varchar(255), event_taglist varchar(511), 
+                    event_start timestamp, event_end timestamp, event_location varchar(255), event_summary varchar(1023), event_link varchar(511))
+
+should create an empty table for us.
 
 """
 
@@ -187,7 +198,7 @@ def event_submission():
 def event_submitted():
     if request.method == "POST":
         try:
-            message = "Your event has been successfully submitted! Your unique ID for this event is: " + str(add_to_dictionary(request.form))        
+            message = "Your event has been successfully submitted! Request form = " + str(request.form)      
         except:
             message = "Something went wrong - sorry!"
         return render_template('event_submitted.html', data = message)
