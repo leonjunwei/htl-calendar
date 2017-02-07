@@ -4,7 +4,7 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <link rel=stylesheet type=text/css href="static/stylesheet.css?version=143">
+        <link rel=stylesheet type=text/css href="static/stylesheet.css?version=5">
         <link href="https://fonts.googleapis.com/css?family=Bree+Serif|Karla|Lobster|Pacifico|Open+Sans+Condensed:300" rel="stylesheet"> <!-- add Google fonts -->
         <title>Clndr</title>
     </head>
@@ -59,13 +59,14 @@
             /* Code for formatting and creating calendar */
             /* Proceed with caution!!!!!!! */
 
-            cal = '<table cellpadding=15>' + TR_start;
-            cal += '<td colspan="' + DAYS_OF_WEEK + '"><center><b><div class="monthheader">';
+            cal = '<center><b><div class="monthheader">';
             cal += "<form method = 'POST' action = '/'><input hidden class='navigation' type='text' name='direction' value='backward'><button class='navigation' type='submit' value='submit'>&laquo;</button></form>&emsp;&emsp;";
             cal += month_of_year[month] + '   ' + year;
-            cal += "&emsp;&emsp;<form method = 'POST' action = '/'><input hidden class='navigation' type='text' name='direction' value='forward'><button class='navigation' type='submit' value='submit'>&raquo;</button></form>" + '</div></b>' + TD_end + TR_end;
+            cal += "&emsp;&emsp;<form method = 'POST' action = '/'><input hidden class='navigation' type='text' name='direction' value='forward'><button class='navigation' type='submit' value='submit'>&raquo;</button></form>" + '</div></b>'
+
+            cal += '<form method = "POST" action = "/"><input class="skinnier" type = "text" name = "date" placeholder="Or, skip to a specific month/year (format: MM/YYYY)...">&emsp;<input hidden type="submit"><button class="submit">Do the Doctor Who</button></form>';
             
-            cal += TR_start;
+            cal += '<table cellpadding=15' + TR_start;
 
             // Loops through each day of a week (Sun-Sat)
             for(index=0; index < DAYS_OF_WEEK; index++) {

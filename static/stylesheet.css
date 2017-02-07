@@ -96,8 +96,12 @@ input {
   vertical-align: middle;
 }
 
-input.wider {
-  width:90%;
+.wider {
+  width: 90%;
+}
+
+.skinnier {
+  width: 30%;
 }
 
 input[type=text] {
@@ -149,11 +153,9 @@ input.navigation {
 
 table {
   border-collapse: collapse;
-  /*border-radius: 5px;*/
   color: #222;
   font-family: 'Bree Serif', serif;
   width: 100%;
-  /*margin: 1%;*/
 }
 
 td {
@@ -215,12 +217,17 @@ a:hover {
 }
 
 p {
-  font-family: 'Bree Serif', serif;
-  font-size: 24px;
+  font-family: 'Open Sans Condensed', sans-serif;
+  font-size: 35px;
 }
 
+.align_right {
+  text-align: right;
+}
 
-
+.align_left {
+  text-align: left;
+}
 
 .tableheader {
   font-family: 'Bree Serif', serif;

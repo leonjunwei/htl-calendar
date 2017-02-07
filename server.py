@@ -39,16 +39,22 @@ def home_page():
         display_year = current_time.year
         return render_template('index.html', month=current_time.month-1, year = current_time.year)
     else:
-        if request.form['direction']=='forward':
-            display_month += 1
-            if display_month > 11:
-                display_year += 1
-                display_month = 0
-        elif request.form['direction']=='backward':
-            display_month -= 1
-            if display_month < 0:
-                display_year -= 1
-                display_month = 11
+        if 'direction' in request.form:
+            if request.form['direction']=='forward':
+                display_month += 1
+                if display_month > 11:
+                    display_year += 1
+                    display_month = 0
+            elif request.form['direction']=='backward':
+                display_month -= 1
+                if display_month < 0:
+                    display_year -= 1
+                    display_month = 11
+        else:
+            date = request.form['date']
+            date_split = date.split('/')
+            display_month = str(int(date_split[0])-1)
+            display_year = date_split[1]
         return render_template('index.html', month=display_month, year=display_year)
 
 
