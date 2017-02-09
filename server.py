@@ -207,7 +207,7 @@ def index():
         return render_template('index.html', month=display_month, year=display_year)
 
 
-@app.route('/event_submission',methods = ["GET","POST"]) #page where users can submit events
+@app.route('/event_submission.html',methods = ["GET","POST"]) #page where users can submit events
 def event_submission():
     if request.method == "GET":
         return render_template('event_submission.html')
@@ -218,10 +218,10 @@ def event_submission():
 @app.route('/event_submitted.html',methods = ["GET","POST"]) #page afterward that shows submission status
 def event_submitted():
     if request.method == "POST":
-        # try:
-        message = "Request form = " + str(request.form) + " and unique ID = " + add_form_to_database(request.form)  
-        # except:
-            # message = "Something went wrong - sorry!"
+        try:
+            message = "Request form = " + str(request.form) + " and unique ID = " + add_form_to_database(request.form)  
+        except:
+            message = "Something went wrong - sorry!"
         return render_template('event_submitted.html', data = message)
     elif request.method == "GET":
         message = "You really shouldn't have gotten here this way."
