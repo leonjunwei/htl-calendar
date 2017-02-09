@@ -207,7 +207,7 @@ def event_submitted():
         message = "You really shouldn't have gotten here this way."
         return render_template('event_submitted.html', data = message)
 
-@app.route('/agenda_view')
+@app.route('/agenda_view.html')
 def agenda_view():
     return render_template('agenda_view.html')
 
