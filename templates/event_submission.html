@@ -1,13 +1,16 @@
 <!DOCTYPE html>
     <head>
         <title>Event submission</title>
+
         <link rel=stylesheet type=text/css href="static/stylesheet.css?version=141">
+
         <link href="https://fonts.googleapis.com/css?family=Bree+Serif|Karla|Lobster|Pacifico|Open+Sans+Condensed:300" rel="stylesheet">
     </head>
 
     <body>
         <center>
         <div class="highlight"><div class="highlight">
+
             <h2><b><a href="event_submission">Event Submissions</a></b></h2></div>
 
             <div class="highlight">
@@ -16,6 +19,7 @@
 
                     <table cellpadding="5%">
                         <tr>
+
                             <td><center><div class="tableheader">Event Name</div></center></td>
                             <td><center><div class="tableheader">Description</div></center></td>
                         </tr>
@@ -32,12 +36,15 @@
                             <td><center><div class="tableheader">Start Time</div></center></td>
                             <td><center><div class="tableheader">End Date</div></center></td>
                             <td><center><div class="tableheader">End Time</div></center></td>
+
                         </tr>
                         <tr>
+
                             <td><input type = "date"  class = "wider" name = "startdate" value="Start date"></td>
                             <td><input type = "text"  class = "wider" name = "timeStart" value="00:00"></td>
                             <td><input type = "date"  class = "wider" name = "enddate" value="End date"></td>
                             <td><input type = "text"  class = "wider" name = "timeEnd" value="23:50"></td>
+
                         </tr>
                     </table>
 
@@ -45,6 +52,7 @@
                         
                     <table cellpadding="5%">
                         <tr>
+
                             <td><center><div class="tableheader">Location</div></center></td>
                             <td><center><div class="tableheader">Tags</div></center></td>
                             <td><center><div class="tableheader">Link</div></center></td>
@@ -53,6 +61,7 @@
                             <td><input type = "text"  class = "wider" name = "location" placeholder="Enter location here..."></td>
                             <td><input type = "text"  class = "wider" name = "tags" placeholder="Enter tags here..."></td>
                             <td><input type = "text"  class = "wider" name = "link" placeholder="Enter URL here..."></td>
+
                     </table>
 
                 </div>
@@ -72,17 +81,6 @@
     </form>
         </center>
     
-<!--             
-        Use something like:
 
-            socket.on('my response', function(msg) {
-                $('#log').append('<br>' + $('<div/>').text('Received #' + msg.count + ': ' + msg.data).html());
-            }); 
-
-            To add a new row? Or we can just google it, really.
-
-            Then we have to lump all the row inputs into a SQL query and pull data from our database.
-
-            -->
   </body>
 </html>
