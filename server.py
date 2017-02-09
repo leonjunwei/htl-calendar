@@ -143,6 +143,7 @@ def add_form_to_database(form):
 
 @app.route('/',methods = ["GET","POST"])
 @app.route('/index',methods = ["GET","POST"])
+@app.route('/index.html',methods = ["GET","POST"])
 def index():
     global display_month
     global display_year
@@ -170,6 +171,7 @@ def index():
         return render_template('index.html', month=display_month, year=display_year)
 
 
+@app.route('/test',methods = ["GET","POST"])
 @app.route('/test.html',methods = ["GET","POST"])
 def test():
     if request.method == "GET":
@@ -184,6 +186,13 @@ def test():
             return render_template('test.html', data = message)
 
 
+@app.route('/event_search', methods = ["GET","POST"])
+@app.route('/event_search.html', methods = ["GET","POST"])
+def event_search():
+    return render_template('event_search.html')
+
+
+@app.route('/event_submission',methods = ["GET","POST"])
 @app.route('/event_submission.html',methods = ["GET","POST"]) #page where users can submit events
 def event_submission():
     if request.method == "GET":
@@ -191,7 +200,7 @@ def event_submission():
     else:
         return render_template('event_submitted.html', data = interact_with_database("select * from events"))
 
-
+@app.route('/event_submitted.',methods = ["GET","POST"])
 @app.route('/event_submitted.html',methods = ["GET","POST"]) #page afterward that shows submission status
 def event_submitted():
     if request.method == "POST":
@@ -207,6 +216,7 @@ def event_submitted():
         message = "You really shouldn't have gotten here this way."
         return render_template('event_submitted.html', data = message)
 
+@app.route('/agenda_view')
 @app.route('/agenda_view.html')
 def agenda_view():
     return render_template('agenda_view.html')
