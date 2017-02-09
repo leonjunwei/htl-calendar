@@ -112,7 +112,6 @@ def add_event_into_database(data):
     flag = None
     instruction = "insert into events values (%s, %s, %s, %s, %s, %s, %s, %s)"
     values = data
-    assert isinstance(values, tuple)
     conn = make_conn()
     with conn.cursor() as cur:
         try:
