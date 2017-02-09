@@ -59,58 +59,57 @@
             <button id = "rowButton" class = "addRow">Add Row</button>
             <div class = "form_main">
                 <form id="experiment_search" method="POST" action='#'>
-                <table>
                     <div id = "insert_target">
-                    <div class = "clone">
-                        <tr>
-                            <td>
-                                Action:
-                            </td>
-                            <td>
-                                <select name="0action" class = "formData"> <!-- When POSTing the form to another page, request.form is {name:value}, i.e. {action:select, letters:a}-->
-                                  <option style="display: inline" value="select">Select</option>
-                                  <option style="display: inline" value="sort">Sort by</option>
-                                </select>
-                            </td>
-                            <td>
-                                Filter:
-                            </td>
-                            <td>
-                                Modifier:
-                            </td>
-                            <td>
-                                Value:
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <select name="0action" class = "formData"> <!-- When POSTing the form to another page, request.form is {name:value}, i.e. {action:select, letters:a}-->
-                                  <option style="display: inline" value="select">Select</option>
-                                  <option style="display: inline" value="sort">Sort by</option>
-                                </select>
-                            </td>
-                            <td>
-                                <select name="0filter" class = "formData">
-                                  <option value="event_name">Event Name</option>
-                                  <option value="event_start">Event Start</option>
-                                  <option value="event_end">Event End</option>
-                                  <option value="event_location">Event Location</option>
-                                  <option value="status">Status</option>
-                                </select>
-                            </td>
-                            <td>
-                                <select name="0is_or_is_not" class = "formData">
-                                  <option value="is">Is</option>
-                                  <option value="is_not">Is Not</option>
-                                </select>
-                            </td>
-                            <td>
-                                <input type = "text"  class = "formData" name = "0values" value="Fill stuff in here!">
-                            </td>                
-                        </tr> <!-- end row -->
-                        </div><!--end clone-->
+                        <table class = "clone">
+                            <tr>
+                                <td>
+                                    Action:
+                                </td>
+                                <td>
+                                    <select name="0action" class = "formData"> <!-- When POSTing the form to another page, request.form is {name:value}, i.e. {action:select, letters:a}-->
+                                      <option style="display: inline" value="select">Select</option>
+                                      <option style="display: inline" value="sort">Sort by</option>
+                                    </select>
+                                </td>
+                                <td>
+                                    Filter:
+                                </td>
+                                <td>
+                                    Modifier:
+                                </td>
+                                <td>
+                                    Value:
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <select name="0action" class = "formData"> <!-- When POSTing the form to another page, request.form is {name:value}, i.e. {action:select, letters:a}-->
+                                      <option style="display: inline" value="select">Select</option>
+                                      <option style="display: inline" value="sort">Sort by</option>
+                                    </select>
+                                </td>
+                                <td>
+                                    <select name="0filter" class = "formData">
+                                      <option value="event_name">Event Name</option>
+                                      <option value="event_start">Event Start</option>
+                                      <option value="event_end">Event End</option>
+                                      <option value="event_location">Event Location</option>
+                                      <option value="status">Status</option>
+                                    </select>
+                                </td>
+                                <td>
+                                    <select name="0is_or_is_not" class = "formData">
+                                      <option value="is">Is</option>
+                                      <option value="is_not">Is Not</option>
+                                    </select>
+                                </td>
+                                <td>
+                                    <input type = "text"  class = "formData" name = "0values" value="Fill stuff in here!">
+                                </td>                
+                            </tr> <!-- end row -->
+                        </table><!--end clone table-->
                     </div> <!--end insert target-->
-                    </table>
+
                     <br>
                     <tr>
                         <input id = "startSearch" class = "submit" type="submit" value="Search">

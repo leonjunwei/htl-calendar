@@ -158,6 +158,13 @@ table {
   width: 100%;
 }
 
+table.formData {
+  border-collapse: collapse;
+  color: #222;
+  font-family: 'Bree Serif', serif;
+  width: 100%;
+}
+
 td {
   white-space: nowrap;
   font-size: 35px;
