@@ -183,6 +183,10 @@ def test():
             message = "Something went horribly wrong."
             return render_template('test.html', data = message)
 
+@app.route('/event_search.html', methods = ["GET","POST"])
+def event_search():
+    return render_template('event_search.html')
+
 
 @app.route('/event_submission.html',methods = ["GET","POST"]) #page where users can submit events
 def event_submission():
