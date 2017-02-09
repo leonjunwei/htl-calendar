@@ -75,20 +75,6 @@
                                     Filter:
                                 </td>
                                 <td>
-                                    Modifier:
-                                </td>
-                                <td>
-                                    Value:
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    <select name="0action" class = "formData"> <!-- When POSTing the form to another page, request.form is {name:value}, i.e. {action:select, letters:a}-->
-                                      <option style="display: inline" value="select">Select</option>
-                                      <option style="display: inline" value="sort">Sort by</option>
-                                    </select>
-                                </td>
-                                <td>
                                     <select name="0filter" class = "formData">
                                       <option value="event_name">Event Name</option>
                                       <option value="event_start">Event Start</option>
@@ -98,15 +84,21 @@
                                     </select>
                                 </td>
                                 <td>
-                                    <select name="0is_or_is_not" class = "formData">
+                                    Modifier:
+                                </td>
+                                <td>
+                                    <select name="0modifier" class = "formData">
                                       <option value="is">Is</option>
                                       <option value="is_not">Is Not</option>
                                     </select>
                                 </td>
                                 <td>
+                                    Value:
+                                </td>
+                                <td>
                                     <input type = "text"  class = "formData" name = "0values" value="Fill stuff in here!">
-                                </td>                
-                            </tr> <!-- end row -->
+                                </td>     
+                            </tr><!-- end row -->
                         </table><!--end clone table-->
                     </div> <!--end insert target-->
 
