@@ -142,7 +142,7 @@ def add_form_to_database(form):
 ## Site Map ##
 
 @app.route('/',methods = ["GET","POST"])
-@app.route('/index.html',methods = ["GET","POST"])
+@app.route('/index',methods = ["GET","POST"])
 def home_page():
     global display_month
     global display_year
@@ -151,16 +151,22 @@ def home_page():
         display_year = current_time.year
         return render_template('index.html', month=current_time.month-1, year = current_time.year)
     else:
-        if request.form['direction']=='forward':
-            display_month += 1
-            if display_month > 11:
-                display_year += 1
-                display_month = 0
-        elif request.form['direction']=='backward':
-            display_month -= 1
-            if display_month < 0:
-                display_year -= 1
-                display_month = 11
+        if 'direction' in request.form:
+            if request.form['direction']=='forward':
+                display_month += 1
+                if display_month > 11:
+                    display_year += 1
+                    display_month = 0
+            elif request.form['direction']=='backward':
+                display_month -= 1
+                if display_month < 0:
+                    display_year -= 1
+                    display_month = 11
+        else:
+            date = request.form['date']
+            date_split = date.split('/')
+            display_month = str(int(date_split[0])-1)
+            display_year = date_split[1]
         return render_template('index.html', month=display_month, year=display_year)
 
 
@@ -201,7 +207,7 @@ def index():
         return render_template('index.html', month=display_month, year=display_year)
 
 
-@app.route('/event_submission.html',methods = ["GET","POST"]) #page where users can submit events
+@app.route('/event_submission',methods = ["GET","POST"]) #page where users can submit events
 def event_submission():
     if request.method == "GET":
         return render_template('event_submission.html')
@@ -224,6 +230,10 @@ def event_submitted():
 
 
 ##Run##
+
+@app.route('/agenda_view')
+def agenda_view():
+    return render_template('agenda_view.html')
 
 if __name__ == '__main__':
     port = int(os.environ.get('PORT', 5000)) #not sure this will work

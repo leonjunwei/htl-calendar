@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+
+  	<head>
+	    <link rel=stylesheet type=text/css href="static/stylesheet.css?version=141">
+	    <link href="https://fonts.googleapis.com/css?family=Bree+Serif|Karla|Lobster|Pacifico|Open+Sans+Condensed:300" rel="stylesheet"> <!-- add Google fonts -->
+	    <title>Clndr</title>
+
+  	</head>
+
+  	<body>
+	  	<center>
+  		<div class="highlight">
+	    <div class="highlight">
+	    <center>
+	    <h2>Agenda View</h2><br/>
+
+	    <a href="event_submission"><button class="menu">Submit Event</button></a>&emsp;
+	    <a href="week_view.html"><button class="menu">Week View</button></a>&emsp;
+	    <a href="/"><button class="menu">Return to Home</button></a></div>
+
+	    <div></div><div class="highlight">
+
+	    <!-- Insert database stuff below this point -->
+	    <form method="POST" action='/event_submitted.html'><input type="text" name="search" placeholder="Search for an event...">&emsp;<button class="submit">Search!</button></form>
+
+	    </div></center>
+  </body>
+</html>

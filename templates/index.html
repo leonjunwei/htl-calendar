@@ -1,128 +1,133 @@
 <!-- HTML/js code adapted from public code by Krishna Eydat -->
+<!-- Authors/contributors: Leon Lam & Emily Yeh -->
 
 <!DOCTYPE html>
 <html>
+    <head>
+        <link rel=stylesheet type=text/css href="static/stylesheet.css?version=5">
+        <link href="https://fonts.googleapis.com/css?family=Bree+Serif|Karla|Lobster|Pacifico|Open+Sans+Condensed:300" rel="stylesheet"> <!-- add Google fonts -->
+        <title>Clndr</title>
+    </head>
 
-  <head>
-    <link rel=stylesheet type=text/css href="static/stylesheet.css?version=24">
-    <link href="https://fonts.googleapis.com/css?family=Bree+Serif|Karla|Lobster|Pacifico|Open+Sans+Condensed:300" rel="stylesheet"> <!-- add Google fonts -->
-    <title>Clndr</title>
-  </head>
+    <body>
+        <center>
+        <div class="highlight">
+        <div class="highlight">
+        <h2><a href="/">Olin Community Calendar</a></h2><br/>
 
-  <body>
+        <!-- Buttons -->
+        <a href="event_submission"><button class="menu">Submit Event</button></a>&emsp;
+        <a href="week_view.html"><button class="menu">Week View</button></a>&emsp;
+        <a href="agenda_view"><button class="menu">Agenda View</button></a>
+        
+        <div id="demo"></div> <!-- Container for JS component -->
 
-    <center>
-    <div class="highlight">
-    <div class="highlight">
-    <h2>Olin Community Calendar</h2>
-    <br/>
-    <a href="event_submission.html"><button>Submit Event</button></a>&emsp;
-    <a href="week_view.html"><button>View by Week</button></a>&emsp;
-    <a href=""><button>View by Month</button></a>&emsp;
-    <a href="agenda_view.html"><button>Agenda View</button></a>
-    </div>
+        <script language="javascript" type="text/javascript">
+            var day_of_week = new Array('Sun','Mon','Tue','Wed','Thu','Fri','Sat');
+            var month_of_year = new Array('January','February','March','April','May','June','July','August','September','October','November','December');
 
-    <div>
+            var Calendar = new Date();
 
-    <div id="demo"></div>
+            var year = {{ year }} // Retrieve year
+            var month = {{ month }} // Retrieve month
+            var today = Calendar.getDate(); // Returns current day (1-31)
+            var weekday = Calendar.getDay(); // Returns current day (Sun-Sat)
+            var thisyear = Calendar.getYear(); // Returns current year (-1900)
+            var thismonth = Calendar.getMonth(); // Returns current year (0-11)
 
-    
-<!--     <br/><div class="highlight">
-    <a href = "event_page.html">Return to Current Month</a></div> -->
-    </center>
-  </div>
-  </body>
+            var DAYS_OF_WEEK = 7; // Number of days in a week
+            var DAYS_OF_MONTH = 31; // "Average" number of days in a month
+            var cal; // Used for printing/creating final calendar
 
-    <script language="javascript" type="text/javascript">
+            Calendar.setDate(1); // Start the calendar day at '1'
+            Calendar.setMonth(month); // Start calendar month at retrieved month
+            Calendar.setYear(year); // Start calendar year at retrieved year
 
-        var day_of_week = new Array('Sun','Mon','Tue','Wed','Thu','Fri','Sat');
-        var month_of_year = new Array('January','February','March','April','May','June','July','August','September','October','November','December');
-
-        // Initializing instance variables
-        var Calendar = new Date();
-
-        var year = {{ year }}
-        var month = {{ month }}
-        // var month = Calendar.getMonth(); // Returns month (0-11)
-        var today = Calendar.getDate();// Returns day (1-31)
-        var weekday = Calendar.getDay(); // Returns day
-
-        var DAYS_OF_WEEK = 7;
-        var DAYS_OF_MONTH = 31;
-        var cal; // Used for printing/creating final calendar
-
-        Calendar.setDate(1); // Start the calendar day at '1'
-        Calendar.setMonth(month); // Start the calendar month at current month
-        Calendar.setYear(year);
-
-        // Instance variables for formatting
-        var TR_start = '<tr>';
-        var TR_end = '</tr>';
-        var highlight_start = '<td><b><center>';
-        var highlight_end   = '</center></b>';
-        var TD_start = '<td><center>';
-        var TD_end = '</center></td>';
+            // Instance variables for formatting
+            var TR_start = '<tr>';
+            var TR_end = '</tr>';
+            var highlight_start = '<td class="borderclass squareclass halfhighlight"><b><div class="content">'; // For highlighting current day
+            var highlight_end   = '</div></b>';
+            var TD_empty_start = '<td>'; // For creating empty cells
+            var TD_empty_end = '</td>';
+            var TD_start = '<td class="borderclass squareclass"><div class="content">'; // For creating all other cells
+            var TD_end = '</div></td>';
+            var event_start = '<div class="event">'; // For adding an event to a cell
+            var event_end = '</div>'
 
 
-        // Code for formatting calendar
+            /* Code for formatting and creating calendar */
+            /* Proceed with caution!!!!!!! */
 
-        cal = '<table cellpadding=15>' + TR_start;
-        cal += '<td colspan="' + DAYS_OF_WEEK + '"><center><b><div class="tableheader">';
+            cal = '<center><b><div class="monthheader">';
+            cal += "<form method = 'POST' action = '/'><input hidden class='navigation' type='text' name='direction' value='backward'><button class='navigation' type='submit' value='submit'>&laquo;</button></form>&emsp;&emsp;";
+            cal += month_of_year[month] + '   ' + year;
+            cal += "&emsp;&emsp;<form method = 'POST' action = '/'><input hidden class='navigation' type='text' name='direction' value='forward'><button class='navigation' type='submit' value='submit'>&raquo;</button></form>" + '</div></b>'
 
-        cal += "<form method = 'POST' action = '/'><input hidden class='navigation' type='text' name='direction' value='backward'><button class='submit' type='submit' value='submit'>&laquo;</button></form>&emsp;&emsp;" + month_of_year[month] + '   ' + year + "&emsp;&emsp;<form method = 'POST' action = '/'><input hidden class='navigation' type='text' name='direction' value='forward'><button class='submit' type='submit' value='submit'>&raquo;</button></form>" + '</div></b>' + TD_end + TR_end;
-        cal += TR_start
-
-
-        // Loops through each day of a week (Sun-Sat)
-        for(index=0; index < DAYS_OF_WEEK; index++) {
-          cal += TD_start + '<div class="tableheader">' + day_of_week[index] + '</div>' + TD_end;
-        }
-
-        cal += TD_end + TR_end;
-        cal += TR_start;
-
-        // Fill in the gaps in the calendar
-        for(index=0; index < Calendar.getDay(); index++)
-          cal += TD_start + '  ' + TD_end;
-
-        // Loops through each day in the month
-        for(index=0; index < DAYS_OF_MONTH; index++) {
-
-          if( Calendar.getDate() > index ) {
+            cal += '<form method = "POST" action = "/"><input class="skinnier" type = "text" name = "date" placeholder="Or, skip to a specific month/year (format: MM/YYYY)...">&emsp;<input hidden type="submit"><button class="submit">Do the Doctor Who</button></form>';
             
-            // Returns the next day to print
-            week_day =Calendar.getDay();
+            cal += '<table cellpadding=15' + TR_start;
 
-            // Start a new row for a new week
-            if(week_day == 0) cal += TR_start;
-
-            if(week_day != DAYS_OF_WEEK) {
-              var day  = Calendar.getDate(); // For looping purposes
-
-              // Highlight current date
-              if(today==Calendar.getDate())
-              cal += highlight_start + day + highlight_end + TD_end;
-
-              // Print day
-              else
-              cal += TD_start + day + TD_end;
+            // Loops through each day of a week (Sun-Sat)
+            for(index=0; index < DAYS_OF_WEEK; index++) {
+                cal += TD_empty_start + '<div class="tableheader"><center>' + day_of_week[index] + '</center></div>' + TD_empty_end;
             }
 
-            // Final row for final week
-            if(week_day == DAYS_OF_WEEK)
             cal += TR_end;
-            }
 
-            // Increments until end of month
-            Calendar.setDate(Calendar.getDate()+1);
+            cal += TR_start;
 
-        } // End for loop
+            // Fill in the gaps in the calendar up to the first
+            for(index=0; index < Calendar.getDay(); index++)
+                cal += TD_empty_start + '  ' + TD_empty_end;
 
-        cal += '</td></tr></table>';
+            // Loops through each day in the month
+            for(index=0; index < DAYS_OF_MONTH; index++) {
 
-        // Print calendar
-        document.getElementById("demo").innerHTML = cal;
+                if( Calendar.getDate() > index ) {
+                
+                    // Returns the next day to print
+                    week_day = Calendar.getDay();
 
-        </script>
+                    // Start a new row for a new week
+                    if(week_day == 0) cal += TR_start;
+
+                    if(week_day != DAYS_OF_WEEK) {
+                        var day  = Calendar.getDate(); // For looping purposes
+
+                        // Highlight current date
+                        if (today==Calendar.getDate()) {
+                            if ((thismonth == month) && (thisyear+1900 == year)) {
+                                cal += highlight_start + day + event_start + "Today" + event_end + highlight_end + TD_end;
+                            } else {
+                                cal += highlight_start + day + highlight_end + TD_end;
+                            }
+                        }
+                      
+                        // Print day
+                        else
+                        cal += TD_start + day + TD_end;
+                        // TO DO: INSERT EVENTS AT SPECIFIED DATES
+                    }
+
+                    // Final row for final week
+                    if(week_day == DAYS_OF_WEEK)
+                    cal += TR_end;
+                }
+
+                // Increments until end of month
+                Calendar.setDate(Calendar.getDate()+1);
+
+            } // End for loop
+
+            cal += '</td></tr></table></div>'; // End JS component
+
+            // Print calendar
+            document.getElementById("demo").innerHTML = cal;
+
+            </script>
+        </div>
+        </center></div></center>
+    </body>
 
 </html>
