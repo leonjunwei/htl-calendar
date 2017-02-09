@@ -86,6 +86,20 @@ button.submit:hover {
   color: white;
 }
 
+button.agenda_request {
+  font-size: 35px;
+  border: none;
+  transition-duration: 0.4s;
+  padding: none;
+  text-align: auto;
+  text-decoration: none;
+}
+
+button.agenda_request:hover {
+  background-color: none;
+  color: white;
+}
+
 form {
   display: inline;
 }
@@ -102,6 +116,22 @@ input {
 
 .skinnier {
   width: 30%;
+}
+
+input[type=submit] {
+  -webkit-transition-duration: 0.4s; /*For Safari users*/
+  transition-duration: 0.4s;
+  font-family: 'Bree Serif', serif;
+  font-size: 35px;
+  background: none;
+  border: none;
+  position: absolute;
+  text-align: left;
+}
+
+input[type=submit]:hover {
+  color: white;
+  cursor: pointer;
 }
 
 input[type=text] {

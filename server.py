@@ -23,8 +23,8 @@ display_year = current_time.year
 ## ^ How to use psycopg2 to connect to/access/edit a postgres database.
 
 
-
 ## Database access/edit ##
+
 
 import psycopg2
 urllib.parse.uses_netloc.append("postgres")
@@ -46,6 +46,7 @@ def make_conn():
     port=url.port)
     return conn
 
+
 def interact_with_database(instruction): #this is A VERY BAD IDEA if you don't want SQL injections
     store = None
     conn = make_conn()
@@ -61,6 +62,7 @@ def interact_with_database(instruction): #this is A VERY BAD IDEA if you don't w
         return "Your instruction was " + str(instruction) + " . Cursor output (if any) is: " + str(store)
     else:
         return "Your instruction was " + str(instruction)
+
 
 def add_event_into_database(data):
     """
@@ -81,6 +83,7 @@ def add_event_into_database(data):
     conn.close()
     return flag #flag tells us if the query succeeded.
 
+
 def add_form_to_database(form):
     """
     Form is an ImmutableMultiDict with keys: 
@@ -97,7 +100,9 @@ def add_form_to_database(form):
     else:
         return flag
 
+
 ## Site Map ##
+
 
 @app.route('/',methods = ["GET","POST"])
 @app.route('/index',methods = ["GET","POST"])
@@ -157,6 +162,7 @@ def event_submission():
         return render_template('event_submission.html')
     else:
         return render_template('event_submitted.html', data = interact_with_database("select * from events"))
+
 
 @app.route('/event_submitted',methods = ["GET","POST"])
 @app.route('/event_submitted.html',methods = ["GET","POST"]) #page afterward that shows submission status
