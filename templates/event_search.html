@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html>
+  	<head>
+	    <link rel=stylesheet type=text/css href="static/stylesheet.css?version=141">
+	    <link href="https://fonts.googleapis.com/css?family=Bree+Serif|Karla|Lobster|Pacifico|Open+Sans+Condensed:300" rel="stylesheet"> <!-- add Google fonts -->
+	    <title>Clndr</title>
+        <script type="text/javascript" src="https://code.jquery.com/jquery-1.4.2.min.js"></script>
+        <script type="text/javascript" charset="utf-8">
+            $(document).ready(function(){
+                
+                $('#rowButton').click(function() {
+                    cloneLast('clone');
+                });
+
+
+
+                function findLastInstance(instance) {
+                    var x = document.getElementsByClassName(instance);
+                    return x[x.length-1];
+                };
+
+                function incrementNumberAtHead(word) {
+                    var store = [];
+                    var store1 = [];
+                    for (var i=0; i<word.length; i++) {
+                        if (/[1234567890]/.test(word.charAt(i))) {
+                        store.push(word.charAt(i));
+                        } 
+                        else 
+                        {
+                            store1.push(word.charAt(i));
+                        }
+                    }
+                    return (parseInt(store.join(""))+1) + store1.join("");
+                }
+
+                var store = []
+                // var cloneCount = 0
+                function cloneLast(thing) {
+                    var z = findLastInstance(thing);
+                    y = $(z).clone()
+                    y.appendTo($('#insert_target'));
+
+                    var x = findLastInstance('clone'); // x is the last object with class 'clone' - this is a div with additional class 'row'
+                    $('.formData',$(x)).each(function() { // for each element with class 'formData' in the jQuery object x (i.e. the row to be cloned)
+                        const a = $(this).attr('name');
+                        $(this).attr('name',(incrementNumberAtHead(a)));
+                        });
+                    };
+                });
+        </script>
+  	</head>
+
+  	<body>
+    <div class = "container">
+            <br></br>
+            <h2><b>Search Events</b></h2>
+            <br></br>
+            <button id = "rowButton" class = "addRow">Add Row</button>
+            <div class = "form_main">
+                <form id="experiment_search" method="POST" action='#'>
+                <!-- <table> -->
+                    <div id = "insert_target">
+                    <div class = "clone">
+                        <tr>
+                            <td>
+                                Action:
+                            </td>
+                            <td>
+                                <select name="0action" class = "formData"> <!-- When POSTing the form to another page, request.form is {name:value}, i.e. {action:select, letters:a}-->
+                                  <option style="display: inline" value="select">Select</option>
+                                  <option style="display: inline" value="sort">Sort by</option>
+                                </select>
+                            </td>
+                            <td>
+                                Filter:
+                            </td>
+                            <td>
+                                Modifier:
+                            </td>
+                            <td>
+                                Value:
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <select name="0action" class = "formData"> <!-- When POSTing the form to another page, request.form is {name:value}, i.e. {action:select, letters:a}-->
+                                  <option style="display: inline" value="select">Select</option>
+                                  <option style="display: inline" value="sort">Sort by</option>
+                                </select>
+                            </td>
+                            <td>
+                                <select name="0filter" class = "formData">
+                                  <option value="event_name">Event Name</option>
+                                  <option value="event_start">Event Start</option>
+                                  <option value="event_end">Event End</option>
+                                  <option value="event_location">Event Location</option>
+                                  <option value="status">Status</option>
+                                </select>
+                            </td>
+                            <td>
+                                <select name="0is_or_is_not" class = "formData">
+                                  <option value="is">Is</option>
+                                  <option value="is_not">Is Not</option>
+                                </select>
+                            </td>
+                            <td>
+                                <input type = "text"  class = "formData" name = "0values" value="Fill stuff in here!">
+                            </td>                
+                        </tr> <!-- end row -->
+                        </div><!--end clone-->
+                    </div> <!--end insert target-->
+                    <!-- </table> -->
+                    <br>
+                    <tr>
+                        <input id = "startSearch" class = "submit" type="submit" value="Search">
+                    </tr>
+                </form>
+                
+            </div> <!-- end form_main -->
+        </div> <!-- end container -->
+  </body>
+</html>
