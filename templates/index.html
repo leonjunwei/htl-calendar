@@ -46,14 +46,24 @@
             // Instance variables for formatting
             var TR_start = '<tr>';
             var TR_end = '</tr>';
+
             var highlight_start = '<td class="borderclass squareclass halfhighlight"><b><div class="content">'; // For highlighting current day
             var highlight_end   = '</div></b>';
+
             var TD_empty_start = '<td>'; // For creating empty cells
             var TD_empty_end = '</td>';
+
+            var post_form_a = '<form method = "POST" action = "/agenda_view"><input hidden type="text" name="agenda_request" value="';
+            var post_form_b = '">'
             var TD_start = '<td class="borderclass squareclass"><div class="content">'; // For creating all other cells
             var TD_end = '</div></td>';
+
             var event_start = '<div class="event">'; // For adding an event to a cell
             var event_end = '</div>'
+
+            var form_a = '<form method = "POST" action = "/agenda_view.html"><input type="hidden" name="day" value="';
+            var form_b = '"/><input type="submit" name="day" value="';
+            var form_c = '"/></form>';
 
 
             /* Code for formatting and creating calendar */
@@ -98,15 +108,15 @@
                         // Highlight current date
                         if (today==Calendar.getDate()) {
                             if ((thismonth == month) && (thisyear+1900 == year)) {
-                                cal += highlight_start + day + event_start + "Today" + event_end + highlight_end + TD_end;
+                                cal += highlight_start + form_a + day + form_b + day + form_c + event_start + "Today" + event_end + highlight_end + TD_end;
                             } else {
-                                cal += highlight_start + day + highlight_end + TD_end;
+                                cal += highlight_start + form_a + day + form_b + day + form_c + highlight_end + TD_end;
                             }
                         }
                       
                         // Print day
                         else
-                        cal += TD_start + day + TD_end;
+                        cal += TD_start + form_a + day + form_b + day + form_c + TD_end;
                         // TO DO: INSERT EVENTS AT SPECIFIED DATES
                     }
 
