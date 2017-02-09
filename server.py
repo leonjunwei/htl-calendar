@@ -14,55 +14,13 @@ display_month = current_time.month-1
 display_year = current_time.year
 
 
-## To-Do ##
-
-# Get an agenda page running
-
-# Get each number on a calendar to go to an agenda page for that date
-"""
-Pull out the day/month/year and query the database for events on that day, then display an agenda page with that info?
-"""
-
-# Figure out how the columns of the database should be laid out
-"""
-1) Unique Event ID (string - maybe allow users to override? What if there's an event by a different user with the same password they want?)
-2) Event Name
-3) Event Taglist (string like "coding from_website limited_number"? A list of all tags ranked by frequency should be accessible somewhere.)
-4) Event start datetime (Allowing users to select date/time of start and date/time of end independently will be good)
-5) Event end datetime   (If they don't put an end date we assume it's the same as the start date)
-6) Event Location
-7) Event Summary
-8) Link/email to event (something people can click for even more details.)
-
-
-CREATE TABLE events (event_ID varchar(255), event_name varchar(255), event_taglist varchar(511), 
-                    event_start timestamp, event_end timestamp, event_location varchar(255), event_summary varchar(1023), event_link varchar(511))
-
-should create an empty table for us.
-
-"""
-
-
-# Users may want to search by event name, event tag (submission, official, carpe might be some of the tags), location, 
-# any combination of (starts earlier than, starts exactly at, starts later than) and (ends earlier than, ends exactly at, ends later than)
-# unique event ID would be good too
-
-
-# figure out if SQL has >= or whether > works
-
-
-# python datetime objects can be stored in postgres via psycopg's cursor.execute(instruction,(data1,)). 
-# Even if there's only one piece of data it still has to be in a tuple
-
-
-
 ## Useful Resources ##
 
-# https://devcenter.heroku.com/articles/heroku-postgresql
-# ^ How to get postgres working for the heroku app
+## https://devcenter.heroku.com/articles/heroku-postgresql
+## ^ How to get postgres working for the heroku app
 
-# http://initd.org/psycopg/docs/usage.html
-# ^ How to use psycopg2 to connect to/access/edit a postgres database.
+## http://initd.org/psycopg/docs/usage.html
+## ^ How to use psycopg2 to connect to/access/edit a postgres database.
 
 
 
@@ -200,7 +158,7 @@ def event_submission():
     else:
         return render_template('event_submitted.html', data = interact_with_database("select * from events"))
 
-@app.route('/event_submitted.',methods = ["GET","POST"])
+@app.route('/event_submitted',methods = ["GET","POST"])
 @app.route('/event_submitted.html',methods = ["GET","POST"]) #page afterward that shows submission status
 def event_submitted():
     if request.method == "POST":
@@ -217,17 +175,61 @@ def event_submitted():
         return render_template('event_submitted.html', data = message)
 
 
-@app.route('/agenda_view')
-@app.route('/agenda_view.html')
+@app.route('/agenda_view',methods = ["GET","POST"])
+@app.route('/agenda_view.html',methods = ["GET","POST"])
 def agenda_view():
-    return render_template('agenda_view.html')
+    if request.method == "POST":
+        data = interact_with_database('select * from events where event_start > \"%s-%s-%s\"' %(str(display_year), str(display_month+1), str(request.form["dayNumber"])))
+    return render_template('agenda_view.html', data) 
+    #database spits out list of event tuples. An event tuple is (event_ID, event_name, event_taglist, event_start, event_end, event_location, event_summary, event_link)
 
 
 
-##Run##
+## Run ##
 
 if __name__ == '__main__':
     port = int(os.environ.get('PORT', 5000)) #not sure this will work
     app.run(host='0.0.0.0', debug=True, port=port)
     # app.run(host='127.0.0.1', debug=True, port=port)
 
+
+## Past Planning ##
+
+# Get an agenda page running
+
+# Get each number on a calendar to go to an agenda page for that date
+"""
+Pull out the day/month/year and query the database for events on that day, then display an agenda page with that info?
+"""
+
+# Figure out how the columns of the database should be laid out
+"""
+1) Unique Event ID (string - maybe allow users to override? What if there's an event by a different user with the same password they want?)
+2) Event Name
+3) Event Taglist (string like "coding from_website limited_number"? A list of all tags ranked by frequency should be accessible somewhere.)
+4) Event start datetime (Allowing users to select date/time of start and date/time of end independently will be good)
+5) Event end datetime   (If they don't put an end date we assume it's the same as the start date)
+6) Event Location
+7) Event Summary
+8) Link/email to event (something people can click for even more details.)
+
+
+CREATE TABLE events (event_ID varchar(255), event_name varchar(255), event_taglist varchar(511), 
+                    event_start timestamp, event_end timestamp, event_location varchar(255), event_summary varchar(1023), event_link varchar(511))
+
+should create an empty table for us.
+
+"""
+
+## To-Do ##
+
+## Users may want to search by event name, event tag (submission, official, carpe might be some of the tags), location, 
+## any combination of (starts earlier than, starts exactly at, starts later than) and (ends earlier than, ends exactly at, ends later than)
+## unique event ID would be good too
+
+
+## figure out if SQL has >= or whether > works
+
+
+## python datetime objects can be stored in postgres via psycopg's cursor.execute(instruction,(data1,)). 
+## Even if there's only one piece of data it still has to be in a tuple
