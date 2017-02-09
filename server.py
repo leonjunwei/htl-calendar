@@ -143,7 +143,7 @@ def add_form_to_database(form):
 
 @app.route('/',methods = ["GET","POST"])
 @app.route('/index',methods = ["GET","POST"])
-def home_page():
+def index():
     global display_month
     global display_year
     if request.method == "GET":
@@ -184,29 +184,6 @@ def test():
             return render_template('test.html', data = message)
 
 
-@app.route('/',methods = ["GET","POST"])
-@app.route('/index',methods = ["GET","POST"])
-def index():
-    global display_month
-    global display_year
-    if request.method == "GET":
-        display_month = current_time.month-1
-        display_year = current_time.year
-        return render_template('index.html', month=current_time.month-1, year = current_time.year)
-    else:
-        if request.form['direction']=='forward':
-            display_month += 1
-            if display_month > 11:
-                display_year += 1
-                display_month = 0
-        elif request.form['direction']=='backward':
-            display_month -= 1
-            if display_month < 0:
-                display_year -= 1
-                display_month = 11
-        return render_template('index.html', month=display_month, year=display_year)
-
-
 @app.route('/event_submission.html',methods = ["GET","POST"]) #page where users can submit events
 def event_submission():
     if request.method == "GET":
@@ -218,22 +195,25 @@ def event_submission():
 @app.route('/event_submitted.html',methods = ["GET","POST"]) #page afterward that shows submission status
 def event_submitted():
     if request.method == "POST":
-        # try:
-        message = "Request form = " + str(request.form) + " and unique ID = " + add_form_to_database(request.form)  
-        # except:
-            # message = "Something went wrong - sorry!"
+        try:
+            message = "Request form = " + str(request.form) + " and unique ID = " + add_form_to_database(request.form)  
+        except:
+            if request.form:
+                message = "Something went wrong - sorry! Request form = " + str(request.form)
+            else:
+                message = "Something went wrong - sorry!"
         return render_template('event_submitted.html', data = message)
     elif request.method == "GET":
         message = "You really shouldn't have gotten here this way."
         return render_template('event_submitted.html', data = message)
 
-
-
-##Run##
-
 @app.route('/agenda_view')
 def agenda_view():
     return render_template('agenda_view.html')
+
+
+
+##Run##
 
 if __name__ == '__main__':
     port = int(os.environ.get('PORT', 5000)) #not sure this will work
