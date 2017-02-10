@@ -34,7 +34,7 @@
          {% for event in data %} 
          <!-- event tuple is (event_ID, event_name, event_taglist, event_start, event_end, event_location, event_summary, event_link) -->
             <tr>
-                <td class = "eventData">{{ event[3] }}</td> <!-- event_start. timestamp is "YYYY-MM-DD HH-MM" -->
+                <td class = "eventData">{{ event[3] }}</td> <!-- event_start. postgres timestamps are 'YYYY-MM-DD HH-MM' -->
                 <td class = "eventData">{{ event[1] }}</td> <!-- event_name -->
                 <td class = "eventData">{{ event[3][11:] }}</td> <!-- event_start, HH-MM only -->
                 <td class = "eventData">{{ event[4][11:] }}</td> <!-- event_end, HH-MM only -->  
