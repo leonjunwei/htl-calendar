@@ -198,7 +198,7 @@ def agenda_view():
                                         str(display_year), str(display_month+1), str(int(request.form["day"])+1)), debug = False)
         # testData = [('1','name','tag1 tag2','2000-01-01 12:00','2000-01-01 14:00','location','summary','link'),('2','name2','tag3 tag4','2010-01-01 12:00','2010-01-01 14:00','location2','summary2','link2')]
     else:
-        events = interact_with_database('select * from events where extract(year from event_start) = %s and extract(month from event_start) = %s"'
+        events = interact_with_database('select * from events where extract(year from event_start) = %s and extract(month from event_start) = %s'
                                         %(str(display_year), str(display_month+1)), debug = False)
     return render_template('agenda_view.html', data = events) 
     #data is a list of event tuples. An event tuple is (event_ID, event_name, event_taglist, event_start, event_end, event_location, event_summary, event_link)
