@@ -34,14 +34,14 @@
          {% for event in data %} 
          <!-- event tuple is (event_ID, event_name, event_taglist, event_start, event_end, event_location, event_summary, event_link) -->
             <tr>
-                <td class = "eventData">{{ event[3] }}</td> <!-- event_start. postgres timestamps are 'YYYY-MM-DD HH-MM' -->
-                <td class = "eventData">{{ event[1] }}</td> <!-- event_name -->
-                <td class = "eventData">{{ event[3][11:] }}</td> <!-- event_start, HH-MM only -->
-                <td class = "eventData">{{ event[4][11:] }}</td> <!-- event_end, HH-MM only -->  
-                <td class = "eventData">{{ event[2] }}</td> <!-- event_taglist -->              
-                <td class = "eventData">{{ event[5] }}</td> <!-- event_location -->
-                <td class = "eventData">{{ event[6] }}</td> <!-- event_summary-->  
-                <td class = "eventData">{{ event[7] }}</td> <!-- event_link -->
+                <td class = "eventData">{{ str(event[3]) }}</td> <!-- event_start. postgres timestamps are 'YYYY-MM-DD HH-MM' -->
+                <td class = "eventData">{{ str(event[1]) }}</td> <!-- event_name -->
+                <td class = "eventData">{{ str(event[3])[11:] }}</td> <!-- event_start, HH-MM only -->
+                <td class = "eventData">{{ str(event[4])[11:] }}</td> <!-- event_end, HH-MM only -->  
+                <td class = "eventData">{{ str(event[2]) }}</td> <!-- event_taglist -->              
+                <td class = "eventData">{{ str(event[5]) }}</td> <!-- event_location -->
+                <td class = "eventData">{{ str(event[6]) }}</td> <!-- event_summary-->  
+                <td class = "eventData">{{ str(event[7]) }}</td> <!-- event_link -->
                 
 
             </tr>
