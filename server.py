@@ -54,11 +54,11 @@ def interact_with_database(instruction, debug=False):
     store = None
     conn = make_conn()
     with conn.cursor() as cur:
-        try:
-            cur.execute(instruction)
-            store = [row for row in cur]
-        except:
-            pass
+        # try:
+        cur.execute(instruction)
+        store = [row for row in cur]
+        # except:
+            # pass
     conn.commit()
     conn.close()
     if debug:
