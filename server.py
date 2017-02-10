@@ -1,17 +1,9 @@
 import os
 import datetime
 import pickle
-
 import urllib.parse
-
 from flask import Flask, redirect, render_template, request, url_for
-
-app = Flask(__name__)
-
-
-current_time = datetime.datetime.now()
-display_month = current_time.month-1
-display_year = current_time.year
+import psycopg2
 
 
 ## Useful Resources ##
@@ -23,10 +15,17 @@ display_year = current_time.year
 ## ^ How to use psycopg2 to connect to/access/edit a postgres database.
 
 
+## Init ##
+
+app = Flask(__name__)
+
+current_time = datetime.datetime.now()
+display_month = current_time.month-1
+display_year = current_time.year
+
+
 ## Database access/edit ##
 
-
-import psycopg2
 urllib.parse.uses_netloc.append("postgres")
 url = urllib.parse.urlparse(os.environ["DATABASE_URL"])
 
@@ -168,28 +167,31 @@ def event_submission():
 @app.route('/event_submitted.html',methods = ["GET","POST"]) #page afterward that shows submission status
 def event_submitted():
     if request.method == "POST":
-        try:
-            message = "Request form = " + str(request.form) + " and unique ID = " + add_form_to_database(request.form)  
-        except:
-            if request.form:
-                message = "Something went wrong - sorry! Request form = " + str(request.form)
-            else:
-                message = "Something went wrong - sorry!"
+        # try:
+        message = "Request form = " + str(request.form) + " and unique ID = " + add_form_to_database(request.form)  
+        # except:
+        #     if request.form:
+        #         message = "Something went wrong - sorry! Request form = " + str(request.form)
+        #     else:
+        #         message = "Something went wrong - sorry!"
         return render_template('event_submitted.html', data = message)
     elif request.method == "GET":
         message = "You really shouldn't have gotten here this way."
         return render_template('event_submitted.html', data = message)
 
 
-@app.route('/agenda_view',methods = ["GET","POST"])
+@app.route('/agenda_view',methods = ["GET","POST"]) 
 @app.route('/agenda_view.html',methods = ["GET","POST"])
 def agenda_view():
-    if request.method == "POST":
-        data = interact_with_database('select * from events where event_start between \"%s-%s-%s\" and \"%s-%s-%s\"' 
-                                        %(str(display_year), str(display_month+1), str(request.form["dayNumber"]),
-                                        str(display_year), str(display_month+1), str(request.form["dayNumber"]+1)))
-    return render_template('agenda_view.html', data) 
-    #database spits out list of event tuples. An event tuple is (event_ID, event_name, event_taglist, event_start, event_end, event_location, event_summary, event_link)
+    events = None
+    testData = None
+    if request.method:# == "POST":
+        # events = interact_with_database('select * from events where event_start between \"%s-%s-%s\" and \"%s-%s-%s\"' 
+        #                                 %(str(display_year), str(display_month+1), str(request.form["dayNumber"]),
+        #                                 str(display_year), str(display_month+1), str(request.form["dayNumber"]+1)))
+        testData = [('1','name','tag1 tag2','2000-01-01 12:00','2000-01-01 14:00','location','summary','link'),('2','name2','tag3 tag4','2010-01-01 12:00','2010-01-01 14:00','location2','summary2','link2')]
+    return render_template('agenda_view.html', data = testData) 
+    #data is a list of event tuples. An event tuple is (event_ID, event_name, event_taglist, event_start, event_end, event_location, event_summary, event_link)
 
 
 

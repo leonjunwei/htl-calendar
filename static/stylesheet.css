@@ -200,6 +200,11 @@ td {
   font-size: 35px;
 }
 
+td.eventData {
+  white-space: nowrap;
+  font-size: 20px;
+}
+
 td.squareclass:hover {
   background: rgba(255, 255, 255, .3);
 }
