@@ -185,7 +185,9 @@ def event_submitted():
 @app.route('/agenda_view.html',methods = ["GET","POST"])
 def agenda_view():
     if request.method == "POST":
-        data = interact_with_database('select * from events where event_start > \"%s-%s-%s\"' %(str(display_year), str(display_month+1), str(request.form["dayNumber"])))
+        data = interact_with_database('select * from events where event_start between \"%s-%s-%s\" and \"%s-%s-%s\"' 
+                                        %(str(display_year), str(display_month+1), str(request.form["dayNumber"]),
+                                        str(display_year), str(display_month+1), str(request.form["dayNumber"]+1)))
     return render_template('agenda_view.html', data) 
     #database spits out list of event tuples. An event tuple is (event_ID, event_name, event_taglist, event_start, event_end, event_location, event_summary, event_link)
 
