@@ -185,12 +185,15 @@ def event_submitted():
 def agenda_view():
     events = None
     testData = None
-    if request.method:# == "POST":
-        # events = interact_with_database('select * from events where event_start between \"%s-%s-%s\" and \"%s-%s-%s\"' 
-        #                                 %(str(display_year), str(display_month+1), str(request.form["dayNumber"]),
-        #                                 str(display_year), str(display_month+1), str(request.form["dayNumber"]+1)))
-        testData = [('1','name','tag1 tag2','2000-01-01 12:00','2000-01-01 14:00','location','summary','link'),('2','name2','tag3 tag4','2010-01-01 12:00','2010-01-01 14:00','location2','summary2','link2')]
-    return render_template('agenda_view.html', data = testData) 
+    if request.method == "POST":
+        events = interact_with_database('select * from events where event_start between \"%s-%s-%s\" and \"%s-%s-%s\"' 
+                                        %(str(display_year), str(display_month+1), str(request.form["dayNumber"]),
+                                        str(display_year), str(display_month+1), str(request.form["dayNumber"]+1)))
+        # testData = [('1','name','tag1 tag2','2000-01-01 12:00','2000-01-01 14:00','location','summary','link'),('2','name2','tag3 tag4','2010-01-01 12:00','2010-01-01 14:00','location2','summary2','link2')]
+    else:
+        events = interact_with_database('select * from events where YEAR(event_start) = %s and MONTH(event_start) = %s"'
+                                        %(str(display_year), str(display_month+1)))
+    return render_template('agenda_view.html', data = events) 
     #data is a list of event tuples. An event tuple is (event_ID, event_name, event_taglist, event_start, event_end, event_location, event_summary, event_link)
 
 
