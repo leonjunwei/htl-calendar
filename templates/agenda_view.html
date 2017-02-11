@@ -26,7 +26,7 @@
                 <td>Name</td>
                 <td>Start</td>
                 <td>End</td>   
-                <td>Tags</td>              
+                <td>Tags</td>
                 <td>Location</td>   
                 <td>Summary</td>   
                 <td>Link</td>   
@@ -34,10 +34,10 @@
          {% for event in data %} 
          <!-- event tuple is (event_ID, event_name, event_taglist, event_start, event_end, event_location, event_summary, event_link) -->
             <tr>
-                <td class = "eventData">{{ event[3] }}</td> <!-- event_start. timestamp is "YYYY-MM-DD HH-MM" -->
+                <td class = "eventData">{{ event[3] }}</td> <!-- event_start. postgres timestamps are 'YYYY-MM-DD HH-MM' -->
                 <td class = "eventData">{{ event[1] }}</td> <!-- event_name -->
-                <td class = "eventData">{{ event[3][11:] }}</td> <!-- event_start, HH-MM only -->
-                <td class = "eventData">{{ event[4][11:] }}</td> <!-- event_end, HH-MM only -->  
+                <td class = "eventData">{{ event[3].time() }}</td> <!-- event_start, HH-MM only -->
+                <td class = "eventData">{{ event[4].time() }}</td> <!-- event_end, HH-MM only -->  
                 <td class = "eventData">{{ event[2] }}</td> <!-- event_taglist -->              
                 <td class = "eventData">{{ event[5] }}</td> <!-- event_location -->
                 <td class = "eventData">{{ event[6] }}</td> <!-- event_summary-->  
@@ -53,6 +53,6 @@
 	    <form method="POST" action='/event_submitted.html'><input type="text" name="search" placeholder="Search for an event...">&emsp;<button class="submit">Search!</button></form>
 
 	    </div></center>
-         }
+         
   </body>
 </html>

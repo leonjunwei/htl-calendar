@@ -5,6 +5,10 @@ import urllib.parse
 from flask import Flask, redirect, render_template, request, url_for
 import psycopg2
 
+## TODO ##
+
+## Event sorting! Earlier events need to show up at the top.
+
 
 ## Useful Resources ##
 
@@ -46,21 +50,28 @@ def make_conn():
     return conn
 
 
-def interact_with_database(instruction): #this is A VERY BAD IDEA if you don't want SQL injections
+def interact_with_database(instruction, debug=False):
+    """
+    debug = True: returns a string that tells you what you just did.
+    debug = False: returns only cursor contents.
+    """
     store = None
     conn = make_conn()
     with conn.cursor() as cur:
-        try:
-            cur.execute(instruction)
-            store = [row for row in cur]
-        except:
-            pass
+        # try:
+        cur.execute(instruction)
+        store = [row for row in cur]
+        # except:
+            # pass
     conn.commit()
     conn.close()
-    if store:
-        return "Your instruction was " + str(instruction) + " . Cursor output (if any) is: " + str(store)
+    if debug:
+        if store:
+            return "Your instruction was " + str(instruction) + " . Cursor output (if any) is: " + str(store)
+        else:
+            return "Your instruction was " + str(instruction) + " . No cursor output."
     else:
-        return "Your instruction was " + str(instruction)
+        return store
 
 
 def add_event_into_database(data):
@@ -142,7 +153,7 @@ def test():
     else:
         if request.form:
             instruction = request.form['request']
-            return render_template('test.html', data = interact_with_database(instruction))
+            return render_template('test.html', data = interact_with_database(instruction, debug = True))
         else:
             message = "Something went horribly wrong."
             return render_template('test.html', data = message)
@@ -160,7 +171,7 @@ def event_submission():
     if request.method == "GET":
         return render_template('event_submission.html')
     else:
-        return render_template('event_submitted.html', data = interact_with_database("select * from events"))
+        return render_template('event_submitted.html', data = interact_with_database("select * from events", debug = False))
 
 
 @app.route('/event_submitted',methods = ["GET","POST"])
@@ -186,13 +197,13 @@ def agenda_view():
     events = None
     testData = None
     if request.method == "POST":
-        events = interact_with_database('select * from events where event_start between \"%s-%s-%s\" and \"%s-%s-%s\"' 
+        events = interact_with_database("select * from events where event_start between \'%s-%s-%s\' and \'%s-%s-%s\' order by event_start asc" #timestamps in postgres are 'YYYY-MM-DD HH-MM' 
                                         %(str(display_year), str(display_month+1), str(request.form["day"]),
-                                        str(display_year), str(display_month+1), str(int(request.form["day"])+1)))
+                                        str(display_year), str(display_month+1), str(int(request.form["day"])+1)), debug = False)
         # testData = [('1','name','tag1 tag2','2000-01-01 12:00','2000-01-01 14:00','location','summary','link'),('2','name2','tag3 tag4','2010-01-01 12:00','2010-01-01 14:00','location2','summary2','link2')]
     else:
-        events = interact_with_database('select * from events where YEAR(event_start) = %s and MONTH(event_start) = %s"'
-                                        %(str(display_year), str(display_month+1)))
+        events = interact_with_database('select * from events where extract(year from event_start) = %s and extract(month from event_start) = %s order by event_start asc'
+                                        %(str(display_year), str(display_month+1)), debug = False)
     return render_template('agenda_view.html', data = events) 
     #data is a list of event tuples. An event tuple is (event_ID, event_name, event_taglist, event_start, event_end, event_location, event_summary, event_link)
 
