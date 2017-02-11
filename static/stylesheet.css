@@ -273,6 +273,7 @@ p {
 .monthheader {
   font-family: 'Marvel', sans-serif;
   font-size: 35px;
+  padding: 0%;
 }
 
 .highlight {
