@@ -189,7 +189,7 @@ table {
   border-collapse: collapse;
   color: #222;
   font-family: 'Bree Serif', serif;
-  /*width: 100%;*/
+  width: 100%;
 }
 
 table.formData {
