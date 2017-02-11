@@ -41,8 +41,8 @@
 
             // Retrieve events to be displayed on calendar
             var input = [
-                {% for event in events | sort %}
-                    {day: {{ event[3][9:10] }}, name: {{ event[1] }} },
+                {% for event in events %}
+                    {day: {{ '%02d' % event[3].day }}, name: {{ event[1] }} },
                 {% endfor %}
                 {}
             ];
