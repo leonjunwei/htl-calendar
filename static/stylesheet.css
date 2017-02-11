@@ -8,13 +8,13 @@ html {
 
 body {
   line-height: 1;
-  margin: 50px;
+  margin: 2%;
 }
 
 div {
   border-radius: 5px;
   box-sizing: border-box;
-  padding: 15px;
+  padding: 2%;
 }
 
 div.addmargin {
@@ -26,6 +26,10 @@ div.event {
   font-family: 'Open Sans Condensed', sans-serif;
   font-size: 30px;
   text-align: center;
+}
+
+div.addborder {
+  border: 5px solid black;
 }
 
 header {
