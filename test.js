@@ -16,7 +16,11 @@ for (i=0; i<10; i++) {
 	if (output[i + '']) {
 		for (j=0; j<10; j++) {
 			if (output[i+''][j]) {
-				console.log(output[i + ''][j]['name'].substring(0, 5));
+				if (output[i+''][j]['name'].length > 5) {
+					console.log(output[i + ''][j]['name'].substring(0, 5) + "...");
+				} else {
+					console.log(output[i + ''][j]['name']);
+				}
 			}
 		}
 	}
