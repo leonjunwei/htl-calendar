@@ -23,7 +23,7 @@ div.addmargin {
 }
 
 div.event {
-  font-family: 'Open Sans Condensed', sans-serif;
+  font-family: 'Marvel', sans-serif;
   font-size: 30px;
   text-align: center;
 }
@@ -47,7 +47,7 @@ h2 {
 
 button {
   -webkit-transition-duration: 0.4s; /*For Safari users*/
-  font-family: 'Bree Serif', serif;
+  font-family: 'Marvel', sans-serif;
   background: none;
   border: 2px black solid;
   transition-duration: 0.4s;
@@ -125,7 +125,7 @@ input {
 input[type=submit] {
   -webkit-transition-duration: 0.4s; /*For Safari users*/
   transition-duration: 0.4s;
-  font-family: 'Bree Serif', serif;
+  font-family: 'Marvel', sans-serif;
   font-size: 35px;
   background: none;
   border: none;
@@ -139,7 +139,7 @@ input[type=submit]:hover {
 }
 
 input[type=text] {
-  font-family: 'Open Sans Condensed', sans-serif;
+  font-family: 'Marvel', sans-serif;
   font-size: 20px;
   padding: 1%;
   display: inline-block;
@@ -159,7 +159,7 @@ input[type=text]:active {
 }
 
 input[type=date] {
-  font-family: 'Open Sans Condensed', sans-serif;
+  font-family: 'Marvel', sans-serif;
   font-size: 20px;
   padding: 1%;
   display: inline-block;
@@ -188,7 +188,7 @@ input.navigation {
 table {
   border-collapse: collapse;
   color: #222;
-  font-family: 'Bree Serif', serif;
+  font-family: 'Marvel', sans-serif;
   width: 100%;
   table-layout: fixed;
 }
@@ -203,7 +203,7 @@ td {
 }
 
 td.eventData {
-  font-family: 'Open Sans Condensed', sans-serif;
+  font-family: 'Marvel', sans-serif;
   white-space: nowrap;
   font-size: 30px;
   line-height: 1.5;
@@ -252,7 +252,7 @@ a:hover {
 }
 
 p {
-  font-family: 'Open Sans Condensed', sans-serif;
+  font-family: 'Marvel', sans-serif;
   font-size: 35px;
 }
 
@@ -265,13 +265,13 @@ p {
 }
 
 .tableheader {
-  font-family: 'Bree Serif', serif;
+  font-family: 'Marvel', sans-serif;
   font-size: 35px;
   font-weight: bold;
 }
 
 .monthheader {
-  font-family: 'Bree Serif', serif;
+  font-family: 'Marvel', sans-serif;
   font-size: 35px;
 }
 
