@@ -190,6 +190,7 @@ table {
   color: #222;
   font-family: 'Bree Serif', serif;
   width: 100%;
+  table-layout: fixed;
 }
 
 table.formData {
@@ -206,6 +207,7 @@ td.eventData {
   white-space: nowrap;
   font-size: 30px;
   line-height: 1.5;
+  overflow: hidden;
 }
 
 td.squareclass:hover {
