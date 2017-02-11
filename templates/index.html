@@ -42,7 +42,7 @@
             // Retrieve events to be displayed on calendar
             var input = [
                 {% for event in events %}
-                    {day: {{ '%02d' % event[3].day }}, name: {{ event[1] }} },
+                    {day: {{ '%02d' % event[3].day }}, name: String({{ event[1] }}) },
                 {% endfor %}
                 {}
             ];
