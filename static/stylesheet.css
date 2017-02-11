@@ -189,14 +189,11 @@ table {
   border-collapse: collapse;
   color: #222;
   font-family: 'Bree Serif', serif;
-  width: 100%;
+  /*width: 100%;*/
 }
 
 table.formData {
   border-collapse: collapse;
-  color: #222;
-  font-family: 'Bree Serif', serif;
-  width: 100%;
 }
 
 td {
@@ -287,11 +284,11 @@ p {
 }
 
 .highlight {
-  background: rgba(255, 255, 255, .6);
+  background: rgba(255, 255, 255, .4);
 }
 
 .halfhighlight {
-  background: rgba(255, 255, 255, .3);
+  background: rgba(255, 255, 255, .2);
 }
 
 ::-webkit-input-placeholder {
