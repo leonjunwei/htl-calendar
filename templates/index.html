@@ -123,7 +123,7 @@
                         if (all_events[day + '']) {
                             for (j=0; j<10; j++) {
                                 if (all_events[day+''][j]) {
-                                    day_event += all_events[day + ''][j]['name'] + "<br/>";
+                                    day_event += all_events[day + ''][j]['name'] + "";
                                 }
                             }
                         }
@@ -131,7 +131,7 @@
                         // Highlight current date
                         if (today==Calendar.getDate()) {
                             if ((thismonth == month) && (thisyear+1900 == year)) {
-                                cal += highlight_start + form_a + day + form_b + day + form_c + event_start + "<br/>Today" + event_end + event_start + day_event + event_end + highlight_end + TD_end;
+                                cal += highlight_start + form_a + day + form_b + day + form_c + event_start + "Today" + event_end + event_start + day_event + event_end + highlight_end + TD_end;
                             } else {
                                 cal += highlight_start + form_a + day + form_b + day + form_c + event_start + day_event + event_end + highlight_end + TD_end;
                             }
