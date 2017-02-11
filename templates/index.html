@@ -40,11 +40,18 @@
             var cal; // Used for printing/creating final calendar
 
             // Retrieve events to be displayed on calendar
-            var all_events = {
+            var input = [
                 {% for event in events | sort %}
-                    {{ event.day }} : {{ event.name }};
+                    {day: {{ event[3][9:10] }}, name: {{ event[1] }} },
                 {% endfor %}
-            }
+                {}
+            ];
+
+            var all_events = input.reduce(function(result, value) { 
+                result[value.day] = result[value.day] || []; 
+                result[value.day].push({day: value.day, name: value.name});
+                return result; 
+                }, {});
 
             Calendar.setDate(1); // Start the calendar day at '1'
             Calendar.setMonth(month); // Start calendar month at retrieved month
@@ -111,19 +118,28 @@
 
                     if(week_day != DAYS_OF_WEEK) {
                         var day  = Calendar.getDate(); // For looping purposes
+                        var day_event = "<br/>";
+
+                        if (all_events[day + '']) {
+                            for (j=0; j<10; j++) {
+                                if (all_events[day+''][j]) {
+                                    day_event += all_events[day + ''][j]['name'] + "<br/>";
+                                }
+                            }
+                        }
 
                         // Highlight current date
                         if (today==Calendar.getDate()) {
                             if ((thismonth == month) && (thisyear+1900 == year)) {
-                                cal += highlight_start + form_a + day + form_b + day + form_c + event_start + "Today" + event_end + highlight_end + TD_end;
+                                cal += highlight_start + form_a + day + form_b + day + form_c + event_start + "Today" + event_end + event_start + day_event + event_end + highlight_end + TD_end;
                             } else {
-                                cal += highlight_start + form_a + day + form_b + day + form_c + highlight_end + TD_end;
+                                cal += highlight_start + form_a + day + form_b + day + form_c + event_start + day_event + event_end + highlight_end + TD_end;
                             }
                         }
                       
                         // Print day
                         else
-                        cal += TD_start + form_a + day + form_b + day + form_c + TD_end;
+                        cal += TD_start + form_a + day + form_b + day + form_c + event_start + day_event + event_end + TD_end;
                         // TO DO: INSERT EVENTS AT SPECIFIED DATES
                     }
 
