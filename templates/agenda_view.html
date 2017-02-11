@@ -2,7 +2,7 @@
 <html>
 
   	<head>
-	    <link rel=stylesheet type=text/css href="static/stylesheet.css?version=141">
+	    <link rel=stylesheet type=text/css href="static/stylesheet.css?version=10">
 	    <link href="https://fonts.googleapis.com/css?family=Bree+Serif|Karla|Lobster|Pacifico|Open+Sans+Condensed:300" rel="stylesheet"> <!-- add Google fonts -->
 	    <title>Clndr</title>
 
@@ -11,7 +11,6 @@
   	<body>
 	  	<center>
   		<div class="highlight">
-	    <div class="highlight">
 	    <center>
 	    <h2>Agenda View</h2><br/>
 
@@ -19,40 +18,38 @@
 	    <a href="week_view.html"><button class="menu">Week View</button></a>&emsp;
 	    <a href="/"><button class="menu">Return to Home</button></a></div>
 
-	    <div>
-        <table>
+         {% for event in data %}
+         <!-- event tuple is (event_ID, event_name, event_taglist, event_start, event_end, event_location, event_summary, event_link) -->
+        <div class="addborder">
+          <table>
             <tr>
                 <td>Date</td>
                 <td>Name</td>
                 <td>Start</td>
-                <td>End</td>   
-                <td>Tags</td>
-                <td>Location</td>   
-                <td>Summary</td>   
-                <td>Link</td>   
+                <td>End</td>    
             </tr>
-         {% for event in data %} 
-         <!-- event tuple is (event_ID, event_name, event_taglist, event_start, event_end, event_location, event_summary, event_link) -->
             <tr>
                 <td class = "eventData">{{ event[3] }}</td> <!-- event_start. postgres timestamps are 'YYYY-MM-DD HH-MM' -->
                 <td class = "eventData">{{ event[1] }}</td> <!-- event_name -->
                 <td class = "eventData">{{ event[3].time() }}</td> <!-- event_start, HH-MM only -->
                 <td class = "eventData">{{ event[4].time() }}</td> <!-- event_end, HH-MM only -->  
-                <td class = "eventData">{{ event[2] }}</td> <!-- event_taglist -->              
-                <td class = "eventData">{{ event[5] }}</td> <!-- event_location -->
-                <td class = "eventData">{{ event[6] }}</td> <!-- event_summary-->  
-                <td class = "eventData">{{ event[7] }}</td> <!-- event_link -->
-                
-
             </tr>
-            
+            <tr>
+              <td>Tags</td>
+              <td>Location</td>   
+              <td>Summary</td>   
+              <td>Link</td>
+            </tr>
+            <tr>
+              <td class = "eventData">{{ event[2] }}</td> <!-- event_taglist -->              
+              <td class = "eventData">{{ event[5] }}</td> <!-- event_location -->
+              <td class = "eventData">{{ event[6] }}</td> <!-- event_summary-->  
+              <td class = "eventData">{{ event[7] }}</td> <!-- event_link -->
+            </tr>
+          </table>
+        </div>
         {% endfor %}
-        </div><div class="highlight">
-
-	    <!-- Insert database stuff below this point -->
-	    <form method="POST" action='/event_submitted.html'><input type="text" name="search" placeholder="Search for an event...">&emsp;<button class="submit">Search!</button></form>
-
-	    </div></center>
+        </div></center>
          
   </body>
 </html>
