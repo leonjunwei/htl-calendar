@@ -17,10 +17,9 @@
 	    <a href="event_submission"><button class="menu">Submit Event</button></a>&emsp;
 	    <a href="week_view.html"><button class="menu">Week View</button></a>&emsp;
 	    <a href="/"><button class="menu">Return to Home</button></a></div>
-
+      <div class="highlight">
          {% for event in data %}
          <!-- event tuple is (event_ID, event_name, event_taglist, event_start, event_end, event_location, event_summary, event_link) -->
-        <div class="addborder highlight">
           <table>
             <tr>
                 <td>Name</td>
@@ -47,7 +46,6 @@
               <td class = "eventData">{{ event[7] }}</td> <!-- event_link -->
             </tr>
           </table>
-          </div>
           <br/>
         {% endfor %}
         </div></center> 
