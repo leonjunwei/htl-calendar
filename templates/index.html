@@ -52,7 +52,7 @@
             // Make events iterable
             var all_events = input.reduce(function(result, value) { 
                 result[value.day] = result[value.day] || []; 
-                result[value.day].push({day: value.day, name: value.name.substring(0,5)});
+                result[value.day].push({day: value.day, name: value.name});
                 return result; 
                 }, {});
 
@@ -126,7 +126,11 @@
                         if (all_events[day + '']) {
                             for (j=0; j<10; j++) {
                                 if (all_events[day+''][j]) {
-                                    day_event += all_events[day + ''][j]['name'] + "<br/>";
+                                    if (all_events[day+''][j]['name'].length > 5) {
+                                        day_event += all_events[day + ''][j]['name'].substring(0, 5) + "..." + "<br/>";
+                                    } else {
+                                        day_event += all_events[day + ''][j]['name'] + "<br/>";
+                                    }
                                 }
                             }
                         }
