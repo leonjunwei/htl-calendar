@@ -23,14 +23,14 @@
         <div class="addborder highlight">
           <table>
             <tr>
-                <td>Date</td>
                 <td>Name</td>
+                <td>Date</td>
                 <td>Start</td>
                 <td>End</td>    
             </tr>
             <tr>
-                <td class = "eventData">{{ event[3] }}</td> <!-- event_start. postgres timestamps are 'YYYY-MM-DD HH-MM' -->
                 <td class = "eventData">{{ event[1] }}</td> <!-- event_name -->
+                <td class = "eventData">{{ event[3] }}</td> <!-- event_start. postgres timestamps are 'YYYY-MM-DD HH-MM' -->
                 <td class = "eventData">{{ event[3].time() }}</td> <!-- event_start, HH-MM only -->
                 <td class = "eventData">{{ event[4].time() }}</td> <!-- event_end, HH-MM only -->  
             </tr>
