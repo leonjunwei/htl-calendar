@@ -52,7 +52,7 @@
             // Make events iterable
             var all_events = input.reduce(function(result, value) { 
                 result[value.day] = result[value.day] || []; 
-                result[value.day].push({day: value.day, name: value.name});
+                result[value.day].push({day: value.day, name: (value.name.substring(0,5) + "...")});
                 return result; 
                 }, {});
 
