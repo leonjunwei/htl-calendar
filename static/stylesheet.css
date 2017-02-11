@@ -279,6 +279,12 @@ p {
   background: rgba(255, 255, 255, .4);
 }
 
+hr {
+  display: block;
+  margin: 5%;
+  border: 1px dotted black;
+}
+
 ::-webkit-input-placeholder {
    color: black;
 }
