@@ -218,34 +218,22 @@ td.squareclass {
   width: 14%;
   position: relative;
   overflow: hidden;
-  padding-bottom: 14%;
-  /*margin: 1%;*/
+  padding-bottom: 14%;]
 }
-
-/*td.squareclass:after {
-  content: '';
-  display: block;
-}*/
 
 td .content {
   position: absolute;
   height: 90%;
   width: 90%;
-  padding: 5%;/*
-  top: 0;
-  bottom: 0;
-  left: 0;
-  right: 0;*/
+  padding: 5%;
 }
 
 a {
   -webkit-transition-duration: 0.4s;
   text-decoration: none;
   color: black;
-  /*font-family: 'Bree Serif', serif;*/
   background: none;
   border: none;
-  /*font-size: 20px;*/
   text-align: center;
 }
 
@@ -285,10 +273,6 @@ p {
 
 .highlight {
   background: rgba(255, 255, 255, .4);
-}
-
-.halfhighlight {
-  background: rgba(255, 255, 255, .2);
 }
 
 ::-webkit-input-placeholder {

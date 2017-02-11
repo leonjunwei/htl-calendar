@@ -4,7 +4,7 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <link rel=stylesheet type=text/css href="static/stylesheet.css?version=8">
+        <link rel=stylesheet type=text/css href="static/stylesheet.css?version=9">
         <link href="https://fonts.googleapis.com/css?family=Bree+Serif|Karla|Lobster|Pacifico|Open+Sans+Condensed:300" rel="stylesheet"> <!-- add Google fonts -->
         <title>Clndr</title>
     </head>
@@ -60,7 +60,7 @@
             var TR_start = '<tr>';
             var TR_end = '</tr>';
 
-            var highlight_start = '<td class="borderclass squareclass halfhighlight"><b><div class="content">'; // For highlighting current day
+            var highlight_start = '<td class="borderclass squareclass highlight"><b><div class="content">'; // For highlighting current day
             var highlight_end   = '</div></b>';
 
             var TD_empty_start = '<td>'; // For creating empty cells
@@ -122,7 +122,7 @@
                         if (all_events[day + '']) {
                             for (j=0; j<10; j++) {
                                 if (all_events[day+''][j]) {
-                                    day_event += all_events[day + ''][j]['name'] + "";
+                                    day_event += all_events[day + ''][j]['name'] + "<br/>";
                                 }
                             }
                         }
