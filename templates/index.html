@@ -4,7 +4,7 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <link rel=stylesheet type=text/css href="static/stylesheet.css?version=9">
+        <link rel=stylesheet type=text/css href="static/stylesheet.css?version=10">
         <link href="https://fonts.googleapis.com/css?family=Bree+Serif|Karla|Lobster|Pacifico|Open+Sans+Condensed:300" rel="stylesheet"> <!-- add Google fonts -->
         <title>Clndr</title>
     </head>
@@ -91,7 +91,7 @@
             cal += month_of_year[month] + '   ' + year;
             cal += "&emsp;&emsp;<form method = 'POST' action = '/'><input hidden class='navigation' type='text' name='direction' value='forward'><button class='navigation' type='submit' value='submit'>&raquo;</button></form>" + '</div></b>'
 
-            cal += '<form method = "POST" action = "/"><input class="skinnier" type = "text" name = "date" placeholder="Or, skip to MM/YYYY">&emsp;<input hidden type="submit"><button class="submit">Do the Doctor Who</button></form>';
+            cal += '<form method = "POST" action = "/"><input class="skinnier" type = "text" name = "date" placeholder="Skip to MM/YYYY">&emsp;<input hidden type="submit"><button class="submit">Do the Doctor Who</button></form>';
             
             cal += '<table cellpadding=15' + TR_start;
 
