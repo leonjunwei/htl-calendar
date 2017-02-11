@@ -211,8 +211,8 @@ def agenda_view():
     return render_template('agenda_view.html', data = events) 
     #data is a list of event tuples. An event tuple is (event_ID, event_name, event_taglist, event_start, event_end, event_location, event_summary, event_link)
 
-@app.route('about')
-@app.route('about.html')
+@app.route('/about')
+@app.route('/about.html')
 def about_page():
     return render_template('about.html')
 
