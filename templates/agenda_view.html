@@ -14,18 +14,19 @@
 	    <center>
 	    <h2>Agenda View</h2><br/>
 
-	    <a href="event_submission"><button class="menu">Submit Event</button></a>&emsp;
-	    <a href="week_view.html"><button class="menu">Week View</button></a>&emsp;
-	    <a href="/"><button class="menu">Return to Home</button></a></div>
+	    <a href="event_submission"><button class="menu">Submit Event</button></a>&emsp;&emsp;
+	    <a href="/"><button class="menu">Return to Home</button></a>&emsp;&emsp;
+      <a href="about.html"><button class="menu">About the Devs</button></a>
+      </div>
       <div class="highlight">
          {% for event in data %}
          <!-- event tuple is (event_ID, event_name, event_taglist, event_start, event_end, event_location, event_summary, event_link) -->
           <table>
             <tr>
-                <td>Name</td>
-                <td>Date</td>
-                <td>Start</td>
-                <td>End</td>    
+                <td><b>Name</b></td>
+                <td><b>Date</b></td>
+                <td><b>Start</b></td>
+                <td><b>End</b></td>    
             </tr>
             <tr>
                 <td class = "eventData">{{ event[1] }}</td> <!-- event_name -->
@@ -34,10 +35,10 @@
                 <td class = "eventData">{{ event[4].time() }}</td> <!-- event_end, HH-MM only -->  
             </tr>
             <tr>
-              <td>Tags</td>
-              <td>Location</td>   
-              <td>Summary</td>   
-              <td>Link</td>
+              <td><b>Tags</b></td>
+              <td><b>Location</b></td>   
+              <td><b>Summary</b></td>   
+              <td><b>Link</b></td>
             </tr>
             <tr>
               <td class = "eventData">{{ event[2] }}</td> <!-- event_taglist -->              
