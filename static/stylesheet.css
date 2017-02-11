@@ -28,7 +28,7 @@ div.event {
   text-align: center;
 }
 
-div.addborder {
+.addborder {
   border: 2px black solid;
 }
 

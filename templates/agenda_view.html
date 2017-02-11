@@ -20,7 +20,7 @@
 
          {% for event in data %}
          <!-- event tuple is (event_ID, event_name, event_taglist, event_start, event_end, event_location, event_summary, event_link) -->
-        <div class="addborder">
+        <span class="addborder">
           <table>
             <tr>
                 <td>Date</td>
@@ -47,7 +47,7 @@
               <td class = "eventData">{{ event[7] }}</td> <!-- event_link -->
             </tr>
           </table>
-          </div>
+          </span>
           <br/>
         {% endfor %}
         </div></center> 
