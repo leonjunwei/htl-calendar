@@ -144,7 +144,7 @@ def index():
             display_month = str(int(date_split[0])-1)
             display_year = date_split[1]
         events = interact_with_database('select * from events where extract(year from event_start) = %s and extract(month from event_start) = %s order by event_start asc'
-                    %(str(display_year), str(display_month+1)), debug = False)
+                    %(str(display_year), str(int(display_month)+1)), debug = False)
         return render_template('index.html', month=display_month, year=display_year, events = events)
 
 
@@ -198,6 +198,8 @@ def event_submitted():
 @app.route('/agenda_view',methods = ["GET","POST"]) 
 @app.route('/agenda_view.html',methods = ["GET","POST"])
 def agenda_view():
+    global display_month
+    global display_year
     events = None
     testData = None
     if request.method == "POST":
