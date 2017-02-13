@@ -27,8 +27,6 @@ Clicking on the 'Submit Event' button will load an event submission page where t
 #### Code
 The code is a standard flask webapp. We have a server.py file that acts as the skeleton of the website, some static resources like backgrounds and CSS files, and html templates that display the data to the user.
 
-Global variables (display_month and display_year) are used to keep track of the month and year to display - this has the unfortunate side effect of making one user's actions affect every other user's displayed calendar (since we only tested with one user, this was totally fine).
-
 Data is passed from HTML templates to python by HTML form inputs. Flask receives this as a dictionary request.form, and parses it to retrieve the relevant information. Data is passed back into HTML by way of Flask's render_template method.
 
 The events themselves are stored in a postgreSQL server provided by Heroku (hobby-dev level, 10000 rows available - if necessary, we could purchase a more expensive database plan). We use psycopg2 as a connector between the python code and the database.
@@ -39,3 +37,9 @@ The events themselves are stored in a postgreSQL server provided by Heroku (hobb
 2. [Provision postgreSQL database for app](https://devcenter.heroku.com/articles/heroku-postgresql)
 3. Push code to app
 4. Open app in browser
+
+#### Issues and Enhancements
+
+Currently, global variables (display_month and display_year) are used to keep track of the month and year to display - this has the unfortunate side effect of making one user's actions affect every other user's displayed calendar (since we only tested with one user, this was totally fine). In the future, we'd want to use sessions or something similar to keep user's display months and years separate from each other.
+
+In addition, the only search available at the moment happens automatically upon clicking the days on the calendar or hitting the 'agenda view' button. Users are unable to search events by tag, name or description - the code infrastructure is in place, but the web form to compile their queries into an SQL query safely has not been made yet. In the future, we'd want to let users search all event fields.
